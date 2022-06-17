@@ -17,7 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42g-ND-hqw">
+<<<<<<< HEAD
                                 <rect key="frame" x="247" y="127" width="67" height="31"/>
+=======
+                                <rect key="frame" x="174" y="236" width="67" height="31"/>
+>>>>>>> c5216487db0f3dc762eb3fac523bfb8136be8255
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
