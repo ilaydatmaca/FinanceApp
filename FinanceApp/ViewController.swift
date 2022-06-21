@@ -7,9 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ResultsVC: UIViewController{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //view.backgroundColor = .systemBlue
+    }
+}
+class ViewController: UIViewController, UISearchResultsUpdating {
     
-
+    
+    let searchController = UISearchController(searchResultsController: ResultsVC())
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -19,8 +26,20 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        //searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else{
+            return
+        }
+        //let vc = searchController.searchResultsController as? ResultsVC
+        //vc.view.backgroundColor = .white
+
+        print(text)
+    }
     
  }
 
