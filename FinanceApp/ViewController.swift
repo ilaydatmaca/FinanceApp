@@ -11,13 +11,16 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate,
                       UICollectionViewDataSource {
     
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     let coins: [String]  = ["Bitcoin" ,"Avalanche", "Ethereum", "Tether", "Coinbase", "Shiba"]
     
     let coinImages: [UIImage] = [
-     UIImage(named: "bitcoin")!,
+     
+        
+        
+        UIImage(named: "bitcoin.png")!,
      UIImage(named: "avalanche")!,
      UIImage(named: "ethereum")!,
      UIImage(named: "tether")!,
@@ -26,7 +29,11 @@ class ViewController: UIViewController, UICollectionViewDelegate,
     ]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        let paths = Bundle.main.paths(forResourcesOfType: "", inDirectory: nil)
+        print(paths)
+
         collectionView.dataSource = self
         collectionView.delegate = self
         // Do any additional setup after loading the view.

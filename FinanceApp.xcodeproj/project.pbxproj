@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C64E37F128619A4500226609 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37F028619A4500226609 /* CollectionViewCell.swift */; };
-		C64E37F32861A9A000226609 /* logoAssets in Resources */ = {isa = PBXBuildFile; fileRef = C64E37F22861A9A000226609 /* logoAssets */; };
 		C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430A9285C9CE100CC0678 /* AppDelegate.swift */; };
 		C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */; };
 		C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AD285C9CE100CC0678 /* ViewController.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		C64E37F028619A4500226609 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		C64E37F22861A9A000226609 /* logoAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = logoAssets; path = ../Desktop/logoAssets; sourceTree = "<group>"; };
 		C64E37F52861A9A700226609 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		C64E37F62861A9A700226609 /* avalanche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avalanche.png; sourceTree = "<group>"; };
 		C64E37F72861A9A700226609 /* ethereum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ethereum.png; sourceTree = "<group>"; };
@@ -89,6 +87,12 @@
 		C64E37F42861A9A700226609 /* logoAssets */ = {
 			isa = PBXGroup;
 			children = (
+				C64E37F52861A9A700226609 /* bitcoin.png */,
+				C64E37F62861A9A700226609 /* avalanche.png */,
+				C64E37F72861A9A700226609 /* ethereum.png */,
+				C64E37F82861A9A700226609 /* tether.png */,
+				C64E37F92861A9A700226609 /* coinbase.png */,
+				C64E37FA2861A9A700226609 /* shiba.png */,
 			);
 			path = logoAssets;
 			sourceTree = "<group>";
@@ -96,7 +100,6 @@
 		C9A4309D285C9CE100CC0678 = {
 			isa = PBXGroup;
 			children = (
-				C64E37F22861A9A000226609 /* logoAssets */,
 				C9A430A8285C9CE100CC0678 /* FinanceApp */,
 				C9A430BF285C9CE200CC0678 /* FinanceAppTests */,
 				C9A430C9285C9CE200CC0678 /* FinanceAppUITests */,
@@ -117,12 +120,6 @@
 		C9A430A8285C9CE100CC0678 /* FinanceApp */ = {
 			isa = PBXGroup;
 			children = (
-				C64E37F52861A9A700226609 /* bitcoin.png */,
-				C64E37F62861A9A700226609 /* avalanche.png */,
-				C64E37F72861A9A700226609 /* ethereum.png */,
-				C64E37F82861A9A700226609 /* tether.png */,
-				C64E37F92861A9A700226609 /* coinbase.png */,
-				C64E37FA2861A9A700226609 /* shiba.png */,
 				C64E37F42861A9A700226609 /* logoAssets */,
 				C9A430A9285C9CE100CC0678 /* AppDelegate.swift */,
 				C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */,
@@ -259,7 +256,6 @@
 			files = (
 				C9A430B6285C9CE200CC0678 /* LaunchScreen.storyboard in Resources */,
 				C9A430B3285C9CE200CC0678 /* Assets.xcassets in Resources */,
-				C64E37F32861A9A000226609 /* logoAssets in Resources */,
 				C9A430B1285C9CE100CC0678 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
