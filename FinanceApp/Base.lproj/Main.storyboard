@@ -17,27 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ph2-Ml-YVJ">
-                                <rect key="frame" x="20" y="153" width="374" height="643"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ph2-Ml-YVJ">
+                                <rect key="frame" x="0.0" y="142" width="414" height="688"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="16" minimumInteritemSpacing="27" id="X3g-iY-SVs">
-                                    <size key="itemSize" width="216" height="245"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="X3g-iY-SVs">
+                                    <size key="itemSize" width="180" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="9" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoinCollectionViewCell" id="wGo-0u-kuN" customClass="CoinCollectionViewCell" customModule="FinanceApp" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="9" width="216" height="245"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="CoinCollectionViewCell" id="wGo-0u-kuN" customClass="CoinCollectionViewCell" customModule="FinanceApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKY-tN-xdC">
-                                            <rect key="frame" x="0.0" y="0.0" width="216" height="245"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKY-tN-xdC">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfefkfşwşfeşwişefişed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmw-hP-yuC">
-                                                    <rect key="frame" x="4" y="111" width="136" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmw-hP-yuC">
+                                                    <rect key="frame" x="0.0" y="105" width="80" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -45,23 +46,31 @@
                                                     <rect key="frame" x="21" y="0.0" width="103" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CVr-in-MR3">
-                                                    <rect key="frame" x="21" y="150" width="136" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="short" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVr-in-MR3">
+                                                    <rect key="frame" x="2" y="135" width="78" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="CVr-in-MR3" secondAttribute="height" multiplier="25:4" id="3Hd-WM-eNW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-II-B0L">
+                                                    <rect key="frame" x="82" y="109" width="88" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Fmw-hP-yuC" firstAttribute="leading" secondItem="jKY-tN-xdC" secondAttribute="leading" constant="8" id="PaI-9K-q2R"/>
-                                                <constraint firstItem="Fmw-hP-yuC" firstAttribute="top" secondItem="k96-do-Jyo" secondAttribute="bottom" constant="8" id="fA4-dT-kbh"/>
+                                                <constraint firstItem="CVr-in-MR3" firstAttribute="top" secondItem="Fmw-hP-yuC" secondAttribute="bottom" constant="2" id="5FE-bS-Ul0"/>
                                                 <constraint firstItem="Fmw-hP-yuC" firstAttribute="top" secondItem="k96-do-Jyo" secondAttribute="bottom" constant="8" symbolic="YES" id="iui-DO-JW9"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="216" height="245"/>
                                         <connections>
                                             <outlet property="coinImage" destination="k96-do-Jyo" id="kXy-Rr-wF5"/>
+                                            <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
                                             <outlet property="coinText" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
                                         </connections>
