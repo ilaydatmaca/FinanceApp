@@ -29,6 +29,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         //searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
+
+
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -37,8 +39,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         }
         //let vc = searchController.searchResultsController as? ResultsVC
         //vc.view.backgroundColor = .white
-
-        print(text)
     }
     
  }
@@ -67,7 +67,6 @@ extension ViewController : UICollectionViewDataSource{
 
 extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(UIScreen.main.bounds.width / 2)
         return CGSize(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
     }
 }
