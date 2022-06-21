@@ -7,59 +7,46 @@
 
 import UIKit
 
-
-class ViewController: UIViewController, UICollectionViewDelegate,
-                      UICollectionViewDataSource {
+class ViewController: UIViewController {
     
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let coins: [String]  = ["Bitcoin" ,"Avalanche", "Ethereum", "Tether", "Coinbase", "Shiba"]
-    
-    let coinImages: [UIImage] = [
-     
-        
-        
-        UIImage(named: "bitcoin.png")!,
-     UIImage(named: "avalanche")!,
-     UIImage(named: "ethereum")!,
-     UIImage(named: "tether")!,
-     UIImage(named: "coinbase")!,
-     UIImage(named: "shiba")!
-    ]
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let paths = Bundle.main.paths(forResourcesOfType: "", inDirectory: nil)
-        print(paths)
-
+        
         collectionView.dataSource = self
         collectionView.delegate = self
-        // Do any additional setup after loading the view.
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
+    
+    
+ }
+
+extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return coins.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        
-        cell.coinLabel.text = coins[indexPath.item]
-        
-        cell.coinImageView.image = coinImages[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+        cell.setup(with: coins[indexPath.row])
         return cell
-        
-        /*var cell = UICollectionViewCell()
-        if let coinCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CollectionViewCell{
-            coinCell.configure(with: coins[indexPath.row])
-            
-            cell = coinCell
-        }
-        
-        return cell*/
     }
+    
+}
 
+extension ViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 195, height: 195)
+    }
+}
 
+extension ViewController : UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(coins[indexPath.row].label)
+    }
 }
 
