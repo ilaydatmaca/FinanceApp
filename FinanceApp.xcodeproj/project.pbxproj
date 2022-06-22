@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E7EABB928634EEC000D0708 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EABB828634EEC000D0708 /* CGFloat+Extensions.swift */; };
 		C62B70AE286333560092D2C8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B70AD286333560092D2C8 /* SecondViewController.swift */; };
 		C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */; };
 		C64E37FE2861E57E00226609 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FD2861E57E00226609 /* Coin.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E7EABB828634EEC000D0708 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		C62B70AD286333560092D2C8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C64E37F52861A9A700226609 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		C64E37F62861A9A700226609 /* avalanche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avalanche.png; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E7EABB728634EC4000D0708 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E7EABB828634EEC000D0708 /* CGFloat+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C64E37F42861A9A700226609 /* logoAssets */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		C9A430A8285C9CE100CC0678 /* FinanceApp */ = {
 			isa = PBXGroup;
 			children = (
+				7E7EABB728634EC4000D0708 /* Extensions */,
 				C64E37F42861A9A700226609 /* logoAssets */,
 				C9A430A9285C9CE100CC0678 /* AppDelegate.swift */,
 				C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */,
@@ -289,6 +300,7 @@
 			files = (
 				C62B70AE286333560092D2C8 /* SecondViewController.swift in Sources */,
 				C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */,
+				7E7EABB928634EEC000D0708 /* CGFloat+Extensions.swift in Sources */,
 				C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */,
 				C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */,
 				C64E37FE2861E57E00226609 /* Coin.swift in Sources */,
