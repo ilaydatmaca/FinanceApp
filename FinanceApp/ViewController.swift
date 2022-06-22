@@ -17,11 +17,19 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet private weak var collectionView: UICollectionView!
+    private let coins : [Coin] = [
+        Coin(label : "Bitcoin", image: UIImage(named: "bitcoin")!, shortening : "BTC", price: "$456,322"),
+        Coin(label : "Avalanche", image: UIImage(named: "avalanche")!, shortening : "AVAX", price: "$456,322"),
+        Coin(label : "Ethereum", image: UIImage(named: "ethereum")!, shortening : "ETH", price: "$456,322"),
+        Coin(label : "Tether", image: UIImage(named: "tether")!, shortening : "USDT", price: "$456,322"),
+        Coin(label : "Coinbase", image: UIImage(named: "coinbase")!, shortening : "COIN", price: "$456,322"),
+        Coin(label : "Shiba", image: UIImage(named: "shiba")!, shortening : "SHIB", price: "$456,322")
+    ]
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         
 //        collectionView.dataSource = self
 //        collectionView.delegate = self
