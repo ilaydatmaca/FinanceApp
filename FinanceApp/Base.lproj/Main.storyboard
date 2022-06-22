@@ -66,6 +66,15 @@
                                                     <rect key="frame" x="52" y="0.0" width="103" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vf-up-vDO">
+                                                    <rect key="frame" x="52" y="0.0" width="103" height="103"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="didTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yoy-PP-GjO"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -114,6 +123,7 @@
                     <connections>
                         <outlet property="collectionView" destination="ph2-Ml-YVJ" id="9Ll-P2-qgc"/>
                         <outlet property="searchTextfield" destination="a5R-nX-NAD" id="SUC-6j-PKV"/>
+                        <segue destination="RB8-7G-yOe" kind="show" identifier="detailView" id="Dm7-f8-vSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -139,6 +149,7 @@
                         <viewLayoutGuide key="safeArea" id="X93-JJ-DeS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sL4-y6-I5q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-Js-oTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

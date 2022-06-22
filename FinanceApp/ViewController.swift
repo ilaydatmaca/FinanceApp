@@ -33,10 +33,11 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
       //  navigationItem.searchController = searchController
         
     }
-    /*@IBAction func about(sender: AnyObject) {
-        performSegue(withIdentifier: "SecondViewController", sender: <#T##Any?#>)("about", sender: sender)
-    }*/
     
+    
+    @IBAction func didTap(_ sender: UIButton) {
+        performSegue(withIdentifier: "detailView", sender: self)
+    }
     
     
     func updateSearchResults(for searchController: UISearchController) {
