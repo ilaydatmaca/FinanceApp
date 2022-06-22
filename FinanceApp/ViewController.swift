@@ -10,11 +10,10 @@ import UIKit
 class ResultsVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .systemBlue
+        view.backgroundColor = .white
     }
 }
-class ViewController: UIViewController, UISearchResultsUpdating {
-    
+class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     let searchController = UISearchController(searchResultsController: ResultsVC())
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,7 +25,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        //searchController.searchBar.delegate = self
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         
