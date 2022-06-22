@@ -29,9 +29,15 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         //searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
-
-
+        
     }
+    
+    /*func calling(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        self.present(controller, animated: true, completion: nil)
+    }*/
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else{
@@ -63,6 +69,7 @@ extension ViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout{
@@ -75,5 +82,7 @@ extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(coins[indexPath.row].label)
     }
+    
+    
 }
 
