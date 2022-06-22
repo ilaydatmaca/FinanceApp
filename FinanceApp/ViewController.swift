@@ -31,12 +31,10 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         navigationItem.searchController = searchController
         
     }
-    
-    /*func calling(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-        self.present(controller, animated: true, completion: nil)
+    /*@IBAction func about(sender: AnyObject) {
+        performSegue(withIdentifier: "SecondViewController", sender: <#T##Any?#>)("about", sender: sender)
     }*/
+    
     
     
     func updateSearchResults(for searchController: UISearchController) {
