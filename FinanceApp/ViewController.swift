@@ -13,10 +13,10 @@ class ResultsVC: UIViewController{
         view.backgroundColor = .white
     }
 }
-class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UITextViewDelegate, UITextFieldDelegate {
+final class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UITextViewDelegate, UITextFieldDelegate {
     
-    let searchController = UISearchController(searchResultsController: ResultsVC())
-    @IBOutlet weak var collectionView: UICollectionView!
+    let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var searchTextfield: UITextField!
     
     override func viewDidLoad() {
@@ -25,8 +25,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         searchTextfield.delegate = self
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -38,7 +38,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     @IBAction func didTap(_ sender: UIButton) {
         performSegue(withIdentifier: "detailView", sender: self)
     }
-    
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else{
@@ -55,6 +54,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
  }
 
+// MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,7 +80,7 @@ extension ViewController : UICollectionViewDataSource{
 
 extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
+        return CGSize(width: CGFloat.halfSizeOfScreen, height: CGFloat.halfSizeOfScreen)
     }
 }
 
@@ -91,4 +91,3 @@ extension ViewController : UICollectionViewDelegate{
     
     
 }
-

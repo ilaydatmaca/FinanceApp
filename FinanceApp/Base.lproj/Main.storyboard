@@ -85,6 +85,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="8Nt-CA-PHu"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KF3-IX-JT5"/>
+                                </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-nX-NAD">
                                 <rect key="frame" x="20" y="101" width="374" height="60"/>
