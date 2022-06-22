@@ -61,6 +61,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="NJ2-DI-bf1">
+                                                    <rect key="frame" x="52" y="0.0" width="103" height="103"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -68,6 +72,7 @@
                                             <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
                                             <outlet property="coinText" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
+                                            <segue destination="RB8-7G-yOe" kind="presentation" modalPresentationStyle="fullScreen" id="dTW-pA-2uR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -103,6 +108,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1346.376811594203" y="94.419642857142847"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="cEn-Am-S1O">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" id="RB8-7G-yOe" customClass="SecondViewController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pfu-Z9-CiC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPw-NU-zSf">
+                                <rect key="frame" x="186" y="367" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X93-JJ-DeS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-Js-oTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2330" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OqI-mu-KNv">

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C62B70AE286333560092D2C8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B70AD286333560092D2C8 /* SecondViewController.swift */; };
 		C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */; };
 		C64E37FE2861E57E00226609 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FD2861E57E00226609 /* Coin.swift */; };
 		C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430A9285C9CE100CC0678 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C62B70AD286333560092D2C8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C64E37F52861A9A700226609 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		C64E37F62861A9A700226609 /* avalanche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avalanche.png; sourceTree = "<group>"; };
 		C64E37F72861A9A700226609 /* ethereum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ethereum.png; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C9A430B4285C9CE200CC0678 /* LaunchScreen.storyboard */,
 				C9A430B7285C9CE200CC0678 /* Info.plist */,
 				C64E37FD2861E57E00226609 /* Coin.swift */,
+				C62B70AD286333560092D2C8 /* SecondViewController.swift */,
 			);
 			path = FinanceApp;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C62B70AE286333560092D2C8 /* SecondViewController.swift in Sources */,
 				C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */,
 				C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */,
 				C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */,
