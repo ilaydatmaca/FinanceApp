@@ -72,7 +72,6 @@
                                             <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
                                             <outlet property="coinText" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
-                                            <segue destination="RB8-7G-yOe" kind="presentation" modalPresentationStyle="fullScreen" id="dTW-pA-2uR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
