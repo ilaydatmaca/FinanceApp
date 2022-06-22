@@ -13,21 +13,24 @@ class ResultsVC: UIViewController{
         view.backgroundColor = .white
     }
 }
-class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UITextViewDelegate, UITextFieldDelegate {
     
     let searchController = UISearchController(searchResultsController: ResultsVC())
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchTextfield: UITextField!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        searchTextfield.delegate = self
         
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
+      //  navigationItem.searchController = searchController
         
     }
     /*@IBAction func about(sender: AnyObject) {
@@ -42,6 +45,11 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         }
         //let vc = searchController.searchResultsController as? ResultsVC
         //vc.view.backgroundColor = .white
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(textField.text)
+        return true
     }
     
  }

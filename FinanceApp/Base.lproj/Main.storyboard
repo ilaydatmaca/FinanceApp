@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -76,19 +77,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="U9V-gO-ULH">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="S27-43-dMF">
-                            <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="FINANCE APP" minimumFontSize="17" id="DoF-hN-ab4">
-                                <rect key="frame" x="20" y="5" width="118" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-nX-NAD">
+                                <rect key="frame" x="20" y="101" width="374" height="60"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="J7N-kj-WGx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a5R-nX-NAD" secondAttribute="trailing" constant="20" id="5yK-LU-id0"/>
+                            <constraint firstItem="a5R-nX-NAD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="oi4-9T-7X7"/>
+                            <constraint firstItem="a5R-nX-NAD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="s2O-dP-ZLQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="U9V-gO-ULH">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="FINANCE APP" id="E9u-xy-liC">
+                            <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Market" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" id="8aY-DB-dCV">
                             <rect key="frame" x="153" y="2.5" width="108" height="39"/>
@@ -102,6 +113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ph2-Ml-YVJ" id="9Ll-P2-qgc"/>
+                        <outlet property="searchTextfield" destination="a5R-nX-NAD" id="SUC-6j-PKV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -153,6 +165,9 @@
     </scenes>
     <resources>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
