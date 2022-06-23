@@ -110,11 +110,8 @@
             </objects>
             <point key="canvasLocation" x="1346.376811594203" y="94.419642857142847"/>
         </scene>
-<<<<<<< HEAD
         <!--Coin Details-->
-=======
         <!--Analytics-->
->>>>>>> feature/Navbar
         <scene sceneID="cEn-Am-S1O">
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" id="RB8-7G-yOe" customClass="CoinDetails" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
