@@ -10,7 +10,7 @@
 		7E7EABB928634EEC000D0708 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EABB828634EEC000D0708 /* CGFloat+Extensions.swift */; };
 		C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */; };
 		C64E37FE2861E57E00226609 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FD2861E57E00226609 /* Coin.swift */; };
-		C66621D62864444D00E2F040 /* CoinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D52864444D00E2F040 /* CoinDetails.swift */; };
+		C66621D82864557700E2F040 /* ViewDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D72864557700E2F040 /* ViewDetailsController.swift */; };
 		C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430A9285C9CE100CC0678 /* AppDelegate.swift */; };
 		C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */; };
 		C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AD285C9CE100CC0678 /* ViewController.swift */; };
@@ -49,7 +49,7 @@
 		C64E37FA2861A9A700226609 /* shiba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shiba.png; sourceTree = "<group>"; };
 		C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		C64E37FD2861E57E00226609 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
-		C66621D52864444D00E2F040 /* CoinDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetails.swift; sourceTree = "<group>"; };
+		C66621D72864557700E2F040 /* ViewDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailsController.swift; sourceTree = "<group>"; };
 		C9A430A6285C9CE100CC0678 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A430A9285C9CE100CC0678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,11 +141,11 @@
 				C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */,
 				C9A430AD285C9CE100CC0678 /* ViewController.swift */,
 				C9A430AF285C9CE100CC0678 /* Main.storyboard */,
-				C66621D52864444D00E2F040 /* CoinDetails.swift */,
 				C9A430B2285C9CE200CC0678 /* Assets.xcassets */,
 				C9A430B4285C9CE200CC0678 /* LaunchScreen.storyboard */,
 				C9A430B7285C9CE200CC0678 /* Info.plist */,
 				C64E37FD2861E57E00226609 /* Coin.swift */,
+				C66621D72864557700E2F040 /* ViewDetailsController.swift */,
 			);
 			path = FinanceApp;
 			sourceTree = "<group>";
@@ -300,9 +300,9 @@
 			files = (
 				C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */,
 				7E7EABB928634EEC000D0708 /* CGFloat+Extensions.swift in Sources */,
-				C66621D62864444D00E2F040 /* CoinDetails.swift in Sources */,
 				C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */,
 				C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */,
+				C66621D82864557700E2F040 /* ViewDetailsController.swift in Sources */,
 				C64E37FE2861E57E00226609 /* Coin.swift in Sources */,
 				C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */,
 			);
