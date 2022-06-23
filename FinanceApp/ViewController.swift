@@ -19,40 +19,9 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var coins: [Coin] = []
-    
-    private var symbol: [Symbol]?
 
 
-    
-    /*func fetchDataFromApi(){
-        
-        guard let gitUrl = URL(string: "https://api.btcturk.com/api/v2/server/exchangeinfo") else { return}
-        
-        URLSession.shared.dataTask(with: gitUrl) { [self] (data, response, error) in
-            
-            guard let data = data else { return }
-        
-            do {
-                let decoder = JSONDecoder()
-                let gitData = try decoder.decode(Welcome.self, from: data)
-                let arrData = gitData.data.symbols
-                
-                /*for i in arrData{
-                    coins.append(Coin(label: i.name, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)) )
-                }*/
-                print("method " , coins.count)
-                    
-            } catch let error {
-                print("Error: ", error)
-            }
-            /*if let result = String(data:data, encoding: .utf8){
-                print(result)
-            }*/
-        }.resume()
-        
-    }*/
-
-    func fetchCoins(completionHandler: @escaping ([Symbol]) -> Void) {
+    func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
         
         guard let url = URL(string: "https://api.btcturk.com/api/v2/server/exchangeinfo") else { return}
         
@@ -61,15 +30,19 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
             print("Error with fetching coins: \(error)")
             return
           }
-          
-          guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else {
-            return
-          }
 
           if let data = data,
             let coinResult = try? JSONDecoder().decode(Welcome.self, from: data) {
-              completionHandler(coinResult.data.symbols ?? [])
+              let arrData = coinResult.data.symbols
+              var mynew : [Coin] = []
+              
+              for i in arrData{
+                  mynew.append(Coin(label: i.name, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
+              }
+              
+              print(mynew)
+              completionHandler(mynew ?? [])
+              
           }
         })
         task.resume()
@@ -80,19 +53,12 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
         super.viewDidLoad()
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
 
-        fetchCoins{ [weak self] symbols in
-                self?.symbol = symbols
+        fetchCoins{ [weak self] coins in
+                self?.coins = coins
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                   }
         }
-        print(symbol?.count)
-        print(coins.count)
-        /*symbol?.forEach{
-            print($0)
-            
-            coins.append(Coin(label: $0.name, image: UIImage(named: "bitcoin")!, shortening: $0.numerator, price: String($0.minimumLimitOrderPrice)) )
-        };"[Symbol]?"*/
         
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -125,10 +91,11 @@ extension ViewController : UICollectionViewDataSource{
         return cell
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return coins.count
     }
-
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
