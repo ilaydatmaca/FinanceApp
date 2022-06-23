@@ -26,22 +26,18 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
         guard let url = URL(string: "https://api.btcturk.com/api/v2/server/exchangeinfo") else { return}
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-          if let error = error {
-            print("Error with fetching coins: \(error)")
+            if error != nil {
             return
           }
 
           if let data = data,
             let coinResult = try? JSONDecoder().decode(Welcome.self, from: data) {
-              let arrData = coinResult.data.symbols
-              var mynew : [Coin] = []
+              var myCoins : [Coin] = []
               
-              for i in arrData{
-                  mynew.append(Coin(label: i.name, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
+              for i in coinResult.data.symbols{
+                  myCoins.append(Coin(label: i.name, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
               }
-              
-              print(mynew)
-              completionHandler(mynew ?? [])
+              completionHandler(myCoins)
               
           }
         })
@@ -51,7 +47,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
 
         fetchCoins{ [weak self] coins in
                 self?.coins = coins
@@ -60,6 +55,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
                   }
         }
         
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
