@@ -37,8 +37,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-
+        
     }
     
     

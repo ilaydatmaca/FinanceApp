@@ -1,13 +1,13 @@
 //
-//  SecondViewController.swift
+//  CoinDetails.swift
 //  FinanceApp
 //
-//  Created by Şevval Atmaca on 22.06.2022.
+//  Created by Şevval Atmaca on 23.06.2022.
 //
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class CoinDetails: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
