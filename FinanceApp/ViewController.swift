@@ -88,6 +88,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(collectionView)
         print(coins[indexPath.row].label)
     }
     
