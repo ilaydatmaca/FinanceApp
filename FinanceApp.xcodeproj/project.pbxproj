@@ -11,6 +11,7 @@
 		C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */; };
 		C64E37FE2861E57E00226609 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FD2861E57E00226609 /* Coin.swift */; };
 		C66621D82864557700E2F040 /* ViewDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D72864557700E2F040 /* ViewDetailsController.swift */; };
+		C66621DA28648A5F00E2F040 /* ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D928648A5F00E2F040 /* ApiData.swift */; };
 		C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430A9285C9CE100CC0678 /* AppDelegate.swift */; };
 		C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */; };
 		C9A430AE285C9CE100CC0678 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430AD285C9CE100CC0678 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		C64E37FD2861E57E00226609 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		C66621D72864557700E2F040 /* ViewDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailsController.swift; sourceTree = "<group>"; };
+		C66621D928648A5F00E2F040 /* ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiData.swift; sourceTree = "<group>"; };
 		C9A430A6285C9CE100CC0678 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A430A9285C9CE100CC0678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		C9A4309D285C9CE100CC0678 = {
 			isa = PBXGroup;
 			children = (
+				C66621D928648A5F00E2F040 /* ApiData.swift */,
 				C9A430A8285C9CE100CC0678 /* FinanceApp */,
 				C9A430BF285C9CE200CC0678 /* FinanceAppTests */,
 				C9A430C9285C9CE200CC0678 /* FinanceAppUITests */,
@@ -302,6 +305,7 @@
 				7E7EABB928634EEC000D0708 /* CGFloat+Extensions.swift in Sources */,
 				C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */,
 				C9A430AC285C9CE100CC0678 /* SceneDelegate.swift in Sources */,
+				C66621DA28648A5F00E2F040 /* ApiData.swift in Sources */,
 				C66621D82864557700E2F040 /* ViewDetailsController.swift in Sources */,
 				C64E37FE2861E57E00226609 /* Coin.swift in Sources */,
 				C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */,
