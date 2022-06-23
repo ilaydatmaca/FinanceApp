@@ -110,11 +110,10 @@
             </objects>
             <point key="canvasLocation" x="1346.376811594203" y="94.419642857142847"/>
         </scene>
-        <!--Coin Details-->
         <!--Analytics-->
         <scene sceneID="cEn-Am-S1O">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="RB8-7G-yOe" customClass="CoinDetails" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" id="RB8-7G-yOe" customClass="ViewDetailsController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pfu-Z9-CiC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,6 +152,12 @@
                             <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="coinIcon" destination="nND-EB-iut" id="h3d-Yy-tU6"/>
+                        <outlet property="coinName" destination="d5r-VY-oGq" id="9ow-6h-OYM"/>
+                        <outlet property="coinPrice" destination="ldA-RE-VeM" id="3nC-eS-kTZ"/>
+                        <outlet property="coinShortening" destination="ldA-RE-VeM" id="oU4-hZ-JZL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-Js-oTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
