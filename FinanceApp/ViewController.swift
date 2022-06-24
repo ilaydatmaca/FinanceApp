@@ -17,7 +17,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
 
     func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
         
-        guard let url = URL(string: "https://api.btcturk.com/api/v2/server/exchangeinfo") else { return}
+        guard let url = URL(string: "https://api.coinstats.app/public/v1/coins") else { return}
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if error != nil {
@@ -28,9 +28,18 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
             let coinResult = try? JSONDecoder().decode(Welcome.self, from: data) {
               var myCoins : [Coin] = []
               
-              for i in coinResult.data.symbols{
-                  myCoins.append(Coin(label: i.numerator, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice), buttonID: i.id))
+              for i in coinResult.coins{
+                  let url = URL(string: i.icon)
+                  let data = try? Data(contentsOf: url!)
+
+                  var myCoinImage = UIImage()
+                  if let imageData = data {
+                      myCoinImage = UIImage(data: imageData)!
+                  }
+                  
+                  myCoins.append(Coin(label: i.name, image: myCoinImage, shortening: i.symbol, price: String(i.price), buttonID: i.rank))
               }
+              
               completionHandler(myCoins)
               
           }
@@ -98,6 +107,10 @@ extension ViewController : UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(coins[indexPath.row].label)
     }
     
 }
