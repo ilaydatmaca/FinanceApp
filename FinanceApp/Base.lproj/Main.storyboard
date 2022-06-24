@@ -64,6 +64,9 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="NJ2-DI-bf1">
                                                     <rect key="frame" x="52" y="0.0" width="103" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <bool key="isElement" value="YES"/>
+                                                    </accessibility>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vf-up-vDO">
                                                     <rect key="frame" x="52" y="0.0" width="103" height="103"/>
@@ -157,7 +160,7 @@
                         <outlet property="coinIcon" destination="nND-EB-iut" id="h3d-Yy-tU6"/>
                         <outlet property="coinName" destination="d5r-VY-oGq" id="9ow-6h-OYM"/>
                         <outlet property="coinPrice" destination="ldA-RE-VeM" id="3nC-eS-kTZ"/>
-                        <outlet property="coinShortening" destination="ldA-RE-VeM" id="oU4-hZ-JZL"/>
+                        <outlet property="coinShortening" destination="I42-cY-dcm" id="9kA-80-Vlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-Js-oTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
