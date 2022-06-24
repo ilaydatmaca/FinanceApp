@@ -35,7 +35,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
               var myCoins : [Coin] = []
               
               for i in coinResult.data.symbols{
-                  myCoins.append(Coin(label: i.name, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
+                  myCoins.append(Coin(label: i.numerator, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
               }
               completionHandler(myCoins)
               
