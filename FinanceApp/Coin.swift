@@ -13,5 +13,6 @@ struct Coin{
     let image : UIImage
     let shortening : String
     let price : String
+    let buttonID : Int
 }
 

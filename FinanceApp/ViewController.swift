@@ -19,6 +19,8 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var coins: [Coin] = []
+    
+    var tapCoin : Coin!
 
 
     func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
@@ -35,7 +37,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
               var myCoins : [Coin] = []
               
               for i in coinResult.data.symbols{
-                  myCoins.append(Coin(label: i.numerator, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice)))
+                  myCoins.append(Coin(label: i.numerator, image: UIImage(named: "bitcoin")!, shortening: i.numerator, price: String(i.minimumLimitOrderPrice), buttonID: i.id))
               }
               completionHandler(myCoins)
               
@@ -63,7 +65,15 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     }
     
     
-    @IBAction func didTap(_ sender: UIButton) {
+    @IBAction func didTap(_ sender: UIButton){
+        print(sender.tag)
+        if let i = coins.index(where: { $0.buttonID == sender.tag }) {
+            tapCoin = coins[i]
+            ViewDetailsController.tapCoin2 = coins[i]
+            print(ViewDetailsController.tapCoin2)
+            print(coins[i])
+            
+        }
         performSegue(withIdentifier: "detailView", sender: self)
     }
     
@@ -73,6 +83,8 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
         }
     }
     
+    
+    
  }
 
 // MARK: - UICollectionViewDataSource
@@ -80,7 +92,6 @@ extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         
         cell.setup(with: coins[indexPath.row])
@@ -114,6 +125,7 @@ extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(coins[indexPath.row].label)
     }
+    
     
     
 }
