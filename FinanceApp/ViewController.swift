@@ -7,12 +7,6 @@
 
 import UIKit
 
-class ResultsVC: UIViewController{
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-    }
-}
 final class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UITextViewDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -20,8 +14,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     private var coins: [Coin] = []
     
-    var tapCoin : Coin!
-
 
     func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
         
@@ -67,12 +59,8 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     @IBAction func didTap(_ sender: UIButton){
         print(sender.tag)
-        if let i = coins.index(where: { $0.buttonID == sender.tag }) {
-            tapCoin = coins[i]
-            ViewDetailsController.tapCoin2 = coins[i]
-            print(ViewDetailsController.tapCoin2)
-            print(coins[i])
-            
+        if let i = coins.firstIndex(where: { $0.buttonID == sender.tag }) {
+            ViewDetailsController.tapCoin = coins[i]
         }
         performSegue(withIdentifier: "detailView", sender: self)
     }
@@ -93,7 +81,6 @@ extension ViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-        
         cell.setup(with: coins[indexPath.row])
         return cell
     }

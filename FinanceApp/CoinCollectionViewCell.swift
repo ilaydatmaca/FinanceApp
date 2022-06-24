@@ -23,16 +23,9 @@ class CoinCollectionViewCell: UICollectionViewCell {
         coinShortening.text = coin.shortening
         coinPrice.text = coin.price
         imageButton.tag = coin.buttonID
-
     }
     
 }
 
-extension CoinCollectionViewCell : UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: Any) {
-        print("yether")
-    }
-    
-}
 
 
