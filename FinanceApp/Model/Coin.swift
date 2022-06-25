@@ -9,11 +9,11 @@ import UIKit
 
 
 struct Coin{
-    let label : String
+    let name : String
     var image : UIImage
     let shortening : String
     let price : String
     let buttonID : Int
-    let imageString : String
+    let imageURLString : String
 }
 

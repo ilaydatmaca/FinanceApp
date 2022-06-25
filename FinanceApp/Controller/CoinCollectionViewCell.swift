@@ -18,7 +18,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageButton: UIButton!
     
     func setup(with coin : Coin){
-        coinName.text = coin.label
+        coinName.text = coin.name
         coinImage.image = coin.image
         coinShortening.text = coin.shortening
         coinPrice.text = coin.price
