@@ -14,7 +14,7 @@ class ViewDetailsController: UIViewController {
     @IBOutlet weak var coinShortening: UILabel!
     @IBOutlet weak var coinPrice: UILabel!
     
-    static var tapCoin : Coin!
+    static var currentCoin : Coin!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,10 @@ class ViewDetailsController: UIViewController {
     }
     
     func setUpDetail(){
-        coinIcon.image = ViewDetailsController.tapCoin.image
-        coinName.text = ViewDetailsController.tapCoin.label
-        coinShortening.text = ViewDetailsController.tapCoin.shortening
-        coinPrice.text = ViewDetailsController.tapCoin.price
+        coinIcon.image = ViewDetailsController.currentCoin.image
+        coinName.text = ViewDetailsController.currentCoin.label
+        coinShortening.text = ViewDetailsController.currentCoin.shortening
+        coinPrice.text = ViewDetailsController.currentCoin.price
         
         
     }
