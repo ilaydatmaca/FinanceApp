@@ -9,7 +9,7 @@ import UIKit
 
 class CoinCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak private var coinText: UILabel!
+    @IBOutlet weak private var coinName: UILabel!
     @IBOutlet weak private var coinImage: UIImageView!
     
     @IBOutlet weak private var coinShortening: UILabel!
@@ -18,7 +18,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageButton: UIButton!
     
     func setup(with coin : Coin){
-        coinText.text = coin.label
+        coinName.text = coin.label
         coinImage.image = coin.image
         coinShortening.text = coin.shortening
         coinPrice.text = coin.price

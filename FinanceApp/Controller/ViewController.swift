@@ -12,14 +12,14 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var coins: [Coin] = []
+    private var coinsList: [Coin] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fetchCoins{ [weak self] coins in
-                self?.coins = coins
+                self?.coinsList = coins
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                   }
@@ -34,8 +34,8 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     
     @IBAction func didTap(_ sender: UIButton){
-        if let i = coins.firstIndex(where: { $0.buttonID == sender.tag }) {
-            ViewDetailsController.tapCoin = coins[i]
+        if let i = coinsList.firstIndex(where: { $0.buttonID == sender.tag }) {
+            ViewDetailsController.currentCoin = coinsList[i]
         }
         performSegue(withIdentifier: "detailView", sender: self)
     }
@@ -67,7 +67,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
               }
               
               completionHandler(myCoins)
-              
           }
         })
         task.resume()
@@ -79,13 +78,23 @@ extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-        cell.setup(with: coins[indexPath.row])
+       
+        let urlString = coinsList[indexPath.row].imageString
+
+
+        ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
+            if image != nil {
+                self.coinsList[indexPath.row].image = image!
+                cell.setup(with: coinsList[indexPath.row])
+            }
+        })
+        
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coins.count
+        return coinsList.count
     }
 
 
@@ -98,13 +107,7 @@ extension ViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let urlString = coins[indexPath.row].imageString
 
-        ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
-            if image != nil {
-                self.coins[indexPath.row].image = image!
-            }
-        })
     }
     
 }
@@ -117,38 +120,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(coins[indexPath.row].label)
+        print(coinsList[indexPath.row].label)
     }
 }
 
-
-//let imageCache = NSCache<NSString, AnyObject>()
-//
-//extension UIImageView {
-//    func loadImageUsingCache(withUrl urlString : String) {
-//        let url = URL(string: urlString)
-//        self.image = nil
-//
-//        // check cached image
-//        if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
-//            self.image = cachedImage
-//            return
-//        }
-//
-//        // if not, download image from url
-//        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//            if error != nil {
-//                print(error!)
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                if let image = UIImage(data: data!) {
-//                    imageCache.setObject(image, forKey: urlString as NSString)
-//                    self.image = image
-//                }
-//            }
-//
-//        }).resume()
-//    }
-//}

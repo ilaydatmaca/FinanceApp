@@ -107,6 +107,7 @@
 		C622F4E52866FBF300C89F0E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */,
 				C66621D72864557700E2F040 /* ViewDetailsController.swift */,
 				C9A430AD285C9CE100CC0678 /* ViewController.swift */,
 			);
@@ -119,6 +120,14 @@
 				C66621D928648A5F00E2F040 /* APIData.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		C622F4E92867087E00C89F0E /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				C622F4E22866F7DF00C89F0E /* ImageLoader.swift */,
+			);
+			path = URL;
 			sourceTree = "<group>";
 		};
 		C9A4309D285C9CE100CC0678 = {
@@ -144,18 +153,17 @@
 		C9A430A8285C9CE100CC0678 /* FinanceApp */ = {
 			isa = PBXGroup;
 			children = (
+				C622F4E92867087E00C89F0E /* URL */,
 				C622F4E62866FC8900C89F0E /* API */,
 				C622F4E52866FBF300C89F0E /* Controller */,
 				C622F4E42866FBD500C89F0E /* Model */,
 				7E7EABB728634EC4000D0708 /* Extensions */,
 				C9A430A9285C9CE100CC0678 /* AppDelegate.swift */,
-				C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */,
 				C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */,
 				C9A430AF285C9CE100CC0678 /* Main.storyboard */,
 				C9A430B2285C9CE200CC0678 /* Assets.xcassets */,
 				C9A430B4285C9CE200CC0678 /* LaunchScreen.storyboard */,
 				C9A430B7285C9CE200CC0678 /* Info.plist */,
-				C622F4E22866F7DF00C89F0E /* ImageLoader.swift */,
 			);
 			path = FinanceApp;
 			sourceTree = "<group>";

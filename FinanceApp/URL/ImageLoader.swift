@@ -19,7 +19,6 @@ class ImageLoader {
             DispatchQueue.main.async {
                 completionHandler(image, urlString)
             }
-            print("downloaded")
             return
         }
         

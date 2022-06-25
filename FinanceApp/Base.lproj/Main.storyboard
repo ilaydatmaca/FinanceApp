@@ -81,9 +81,9 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="coinImage" destination="k96-do-Jyo" id="kXy-Rr-wF5"/>
+                                            <outlet property="coinName" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
                                             <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
-                                            <outlet property="coinText" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
                                             <outlet property="imageButton" destination="5vf-up-vDO" id="HXc-UQ-XqP"/>
                                         </connections>
                                     </collectionViewCell>
