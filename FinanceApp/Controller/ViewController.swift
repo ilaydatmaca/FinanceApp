@@ -62,7 +62,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
               
               for i in coinResult.coins{
                   
-                  let roundedPrice = String(round(1000 * i.price) / 1000)
+                  let roundedPrice = "TRY" + String(round(100 * i.price) / 100)
 
                   myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon))
               }
