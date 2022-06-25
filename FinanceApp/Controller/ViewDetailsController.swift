@@ -24,7 +24,7 @@ class ViewDetailsController: UIViewController {
     
     func setUpDetail(){
         coinIcon.image = ViewDetailsController.currentCoin.image
-        coinName.text = ViewDetailsController.currentCoin.label
+        coinName.text = ViewDetailsController.currentCoin.name
         coinShortening.text = ViewDetailsController.currentCoin.shortening
         coinPrice.text = ViewDetailsController.currentCoin.price
         

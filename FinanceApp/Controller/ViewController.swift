@@ -47,7 +47,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
     }
     
     
-
     func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
         
         guard let url = URL(string: "https://api.coinstats.app/public/v1/coins") else { return}
@@ -63,7 +62,9 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
               
               for i in coinResult.coins{
                   
-                  myCoins.append(Coin(label: i.name, image: UIImage(), shortening: i.symbol, price: String(i.price), buttonID: i.rank, imageString: i.icon))
+                  let roundedPrice = String(round(1000 * i.price) / 1000)
+
+                  myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon))
               }
               
               completionHandler(myCoins)
@@ -79,8 +80,7 @@ extension ViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
        
-        let urlString = coinsList[indexPath.row].imageString
-
+        let urlString = coinsList[indexPath.row].imageURLString
 
         ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
             if image != nil {
@@ -91,7 +91,6 @@ extension ViewController : UICollectionViewDataSource{
         
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return coinsList.count
@@ -112,6 +111,7 @@ extension ViewController : UICollectionViewDataSource{
     
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat.halfSizeOfScreen, height: CGFloat.halfSizeOfScreen)
@@ -120,7 +120,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(coinsList[indexPath.row].label)
+        print(coinsList[indexPath.row].name)
     }
 }
 
