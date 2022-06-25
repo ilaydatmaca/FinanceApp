@@ -6,12 +6,12 @@
 //
 import Foundation
 
-struct Welcome: Codable {
-    let coins: [CoinJSON]
+struct CoinsRequest: Codable {
+    let coins: [CoinData]
 }
 
 // MARK: - Coin
-struct CoinJSON: Codable {
+struct CoinData: Codable {
     let id: String
     let icon: String
     let name, symbol: String
@@ -26,7 +26,7 @@ struct CoinJSON: Codable {
     let contractAddress: String?
     let decimals: Int?
     let redditURL: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, icon, name, symbol, rank, price, priceBtc, volume, marketCap, availableSupply, totalSupply
         case priceChange1H = "priceChange1h"
