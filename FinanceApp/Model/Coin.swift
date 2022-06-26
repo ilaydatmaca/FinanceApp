@@ -15,5 +15,9 @@ struct Coin{
     let price : String
     let buttonID : Int
     let imageURLString : String
+    let btcPrice : Double
+    let marketCap : Double
+    let volume : Double
+    let rank : Int
 }
 
