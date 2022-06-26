@@ -36,7 +36,7 @@ class ViewDetailsController: UIViewController {
     
         volume.text = String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion )
         rank.text = String(ViewDetailsController.currentCoin.rank)
-        btcPrice.text = String(ViewDetailsController.currentCoin.rank)
+        btcPrice.text = String(ViewDetailsController.currentCoin.btcPrice)
         
         
     }
