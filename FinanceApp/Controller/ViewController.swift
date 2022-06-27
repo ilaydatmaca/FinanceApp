@@ -16,19 +16,19 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     
     private var coinsList: [Coin] = []
     var filteredData : [Coin] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fetchCoins{ [weak self] coins in
-                self?.coinsList = coins
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                  }
+            self?.coinsList = coins
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
         }
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-
+        
         searchBar.delegate = self
         //searchController.searchResultsUpdater = self
         //navigationItem.searchController = searchController
@@ -37,7 +37,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     
     
     @IBAction func didTap(_ sender: UIButton){
-        if let i = coinsList.firstIndex(where: { $0.buttonID == sender.tag }) {
+        if let i = filteredData.firstIndex(where: { $0.buttonID == sender.tag }) {
             ViewDetailsController.currentCoin = filteredData[i]
         }
         performSegue(withIdentifier: "detailView", sender: self)
@@ -56,39 +56,43 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if error != nil {
-            return
-          }
-
-          if let data = data,
-            let coinResult = try? JSONDecoder().decode(CoinsRequest.self, from: data) {
-              var myCoins : [Coin] = []
-              
-              for i in coinResult.coins{
-                  
-                  let roundedPrice = "$" + String(round(100 * i.price) / 100)
-                  
-                  
-                  myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
-                  
-                  
-              }
-              self.filteredData = myCoins
-              completionHandler(myCoins)
-          }
+                return
+            }
+            
+            if let data = data,
+               let coinResult = try? JSONDecoder().decode(CoinsRequest.self, from: data) {
+                var myCoins : [Coin] = []
+                
+                for i in coinResult.coins{
+                    
+                    let roundedPrice = "$" + String(round(100 * i.price) / 100)
+                    
+                    
+                    myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
+                    
+                    
+                }
+                self.filteredData = myCoins
+                completionHandler(myCoins)
+            }
         })
         task.resume()
-      }
- }
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-       
+        
         let urlString = filteredData[indexPath.row].imageURLString
-
+        
         ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
+            if(filteredData.count == 0){
+                return
+            }
+            
             if image != nil {
                 self.filteredData[indexPath.row].image = image!
                 self.coinsList[indexPath.row].image = image!
@@ -102,18 +106,18 @@ extension ViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredData.count
     }
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
+        
     }
     
 }
@@ -142,7 +146,6 @@ extension ViewController : UISearchBarDelegate{
             if word.name.uppercased().contains(searchText.uppercased())
             {
                 filteredData.append(word)
-                print(word)
             }
         }
         self.collectionView.reloadData()
