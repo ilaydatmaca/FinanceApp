@@ -7,14 +7,16 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UITextViewDelegate {
+final class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
     
-    let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    //let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var coinsList: [Coin] = []
-    
-    
+    var filteredData : [Coin] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,16 +28,17 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
         }
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+
+        searchBar.delegate = self
+        //searchController.searchResultsUpdater = self
+        //navigationItem.searchController = searchController
+        //navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     
     @IBAction func didTap(_ sender: UIButton){
         if let i = coinsList.firstIndex(where: { $0.buttonID == sender.tag }) {
-            ViewDetailsController.currentCoin = coinsList[i]
+            ViewDetailsController.currentCoin = filteredData[i]
         }
         performSegue(withIdentifier: "detailView", sender: self)
     }
@@ -66,8 +69,10 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UISearchB
                   
                   
                   myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
+                  
+                  
               }
-              
+              self.filteredData = myCoins
               completionHandler(myCoins)
           }
         })
@@ -81,12 +86,13 @@ extension ViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
        
-        let urlString = coinsList[indexPath.row].imageURLString
+        let urlString = filteredData[indexPath.row].imageURLString
 
         ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
             if image != nil {
+                self.filteredData[indexPath.row].image = image!
                 self.coinsList[indexPath.row].image = image!
-                cell.setup(with: coinsList[indexPath.row])
+                cell.setup(with: filteredData[indexPath.row])
             }
         })
         
@@ -94,7 +100,7 @@ extension ViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coinsList.count
+        return filteredData.count
     }
 
 
@@ -121,7 +127,24 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 extension ViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(coinsList[indexPath.row].name)
+        print(filteredData[indexPath.row].name)
     }
 }
 
+extension ViewController : UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = []
+        if searchText == ""
+        {
+            filteredData = coinsList
+        }
+        for word in coinsList{
+            if word.name.uppercased().contains(searchText.uppercased())
+            {
+                filteredData.append(word)
+                print(word)
+            }
+        }
+        self.collectionView.reloadData()
+    }
+}
