@@ -23,6 +23,9 @@ class CoinCollectionViewCell: UICollectionViewCell {
         coinShortening.text = coin.shortening
         coinPrice.text = coin.price
         imageButton.tag = coin.buttonID
+        coinName.font = UIFont(name:"Montserrat", size: 20.0)
+        coinShortening.font = UIFont(name:"Montserrat", size: 18.0)
+        coinPrice.font = UIFont(name:"Montserrat", size: 20.0)
     }
     
 }
