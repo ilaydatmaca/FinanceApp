@@ -32,10 +32,10 @@ class ViewDetailsController: UIViewController {
         coinShortening.text = ViewDetailsController.currentCoin.shortening
         coinPrice.text = ViewDetailsController.currentCoin.price
         
-        marketCap.text = String(format: "%.2f", ViewDetailsController.currentCoin.marketCap / CGFloat.billion )
+        marketCap.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.marketCap / CGFloat.billion ) + "B"
     
-        volume.text = String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion )
-        rank.text = String(ViewDetailsController.currentCoin.rank)
+        volume.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion ) + "B"
+        rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(ViewDetailsController.currentCoin.btcPrice)
         
         
