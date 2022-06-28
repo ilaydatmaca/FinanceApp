@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Charts
 final class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
