@@ -15,14 +15,34 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     private var coinsList: [Coin] = [] //all coins in the api
     var filteredData : [Coin] = []//filtered coins if there is a seach
     
+    
+    
+    private var denemeCoin: [Coin] = [] //all coins in the api
+    var denemeList: [Any] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchCoins{ [weak self] coins in
-            self?.coinsList = coins
+        /*fetchCoins{ [weak self] coins in
+         self?.coinsList = coins
+         DispatchQueue.main.async {
+         self?.collectionView.reloadData()
+         }
+         }*/
+        fetchAny(urlString: "https://api.coinstats.app/public/v1/coins", CoinsRequest.self) { [weak self] coins1 in
+            
+            for i in coins1.coins{
+                let roundedPrice = "$" + String(round(100 * i.price) / 100)
+                
+                self!.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
+                
+            }
+            
+            self?.filteredData = self?.coinsList ?? []
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
             }
+            
         }
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -41,6 +61,24 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         guard searchController.searchBar.text != nil else{
             return
         }
+    }
+    
+    func fetchAny<T : Decodable>(urlString: String,_ typeClass: T.Type, completionHandler: @escaping (T) -> Void) {
+        
+        guard let url = URL(string: urlString) else { return}
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            if error != nil {
+                return
+            }
+            
+            if let data = data,
+               let coinResult = try? JSONDecoder().decode(T.self, from: data) {
+                completionHandler(coinResult)
+            }
+            
+        })
+        task.resume()
     }
     
     
