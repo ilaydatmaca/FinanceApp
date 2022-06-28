@@ -7,6 +7,7 @@
 
 import UIKit
 
+//for the first screen
 class CoinCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak private var coinName: UILabel!

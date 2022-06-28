@@ -10,12 +10,10 @@ import UIKit
 final class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    //let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var coinsList: [Coin] = []
-    var filteredData : [Coin] = []
+    private var coinsList: [Coin] = [] //all coins in the api
+    var filteredData : [Coin] = []//filtered coins if there is a seach
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +26,13 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         }
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
         searchBar.delegate = self
-        //searchController.searchResultsUpdater = self
-        //navigationItem.searchController = searchController
-        //navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     
-    @IBAction func didTap(_ sender: UIButton){
-        if let i = filteredData.firstIndex(where: { $0.buttonID == sender.tag }) {
-            ViewDetailsController.currentCoin = filteredData[i]
+    @IBAction func didTap(_ sender: UIButton){ //if you press a coin then it will open their details screen
+        if let i = filteredData.firstIndex(where: { $0.buttonID == sender.tag }) { //find the id of pressed coin
+            ViewDetailsController.currentCoin = filteredData[i]//then arrange details screen for this coin
         }
         performSegue(withIdentifier: "detailView", sender: self)
     }
@@ -83,17 +77,17 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
 // MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource{
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {//this function is calling for cells in the screen
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         
-        let urlString = filteredData[indexPath.row].imageURLString
+        let urlString = filteredData[indexPath.row].imageURLString //take url string for each cell in the screen
         
         ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
-            if(filteredData.count == 0){
+            if(filteredData.count == 0){//if the result is empty then return back
                 return
             }
             
-            if image != nil {
+            if image != nil {//else shows images
                 self.filteredData[indexPath.row].image = image!
                 self.coinsList[indexPath.row].image = image!
                 cell.setup(with: filteredData[indexPath.row])
@@ -103,11 +97,11 @@ extension ViewController : UICollectionViewDataSource{
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {//filtered data count
         return filteredData.count
     }
     
-    
+    //for UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -124,30 +118,35 @@ extension ViewController : UICollectionViewDataSource{
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout{
+    //each cell's size is half of screeen
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat.halfSizeOfScreen, height: CGFloat.halfSizeOfScreen)
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ViewController : UICollectionViewDelegate{
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(filteredData[indexPath.row].name)
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension ViewController : UISearchBarDelegate{
+    
+    //when click the search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = []
-        if searchText == ""
+        if searchText == ""//if the search text is empty then shows all coins
         {
             filteredData = coinsList
         }
-        for word in coinsList{
+        for word in coinsList{ //else just shows according to search text
             if word.name.uppercased().contains(searchText.uppercased())
             {
                 filteredData.append(word)
             }
         }
-        self.collectionView.reloadData()
+        self.collectionView.reloadData()//reload data
     }
 }

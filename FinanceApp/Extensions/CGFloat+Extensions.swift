@@ -18,8 +18,6 @@ extension CGFloat {
     
     static func roundTo(num : Double) -> Double{
         return 0.0
-
-        
     }
 }
 
