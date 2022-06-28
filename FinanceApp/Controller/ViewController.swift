@@ -16,19 +16,10 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     var filteredData : [Coin] = []//filtered coins if there is a seach
     
     
-    
-    private var denemeCoin: [Coin] = [] //all coins in the api
-    var denemeList: [Any] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*fetchCoins{ [weak self] coins in
-         self?.coinsList = coins
-         DispatchQueue.main.async {
-         self?.collectionView.reloadData()
-         }
-         }*/
+        
         fetchAny(urlString: "https://api.coinstats.app/public/v1/coins", CoinsRequest.self) { [weak self] coins1 in
             
             for i in coins1.coins{
@@ -38,12 +29,13 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
                 
             }
             
-            self?.filteredData = self?.coinsList ?? []
             DispatchQueue.main.async {
+                self?.filteredData = self?.coinsList ?? []
                 self?.collectionView.reloadData()
             }
             
         }
+
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
@@ -81,35 +73,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         task.resume()
     }
     
-    
-    func fetchCoins(completionHandler: @escaping ([Coin]) -> Void) {
-        
-        guard let url = URL(string: "https://api.coinstats.app/public/v1/coins") else { return}
-        
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            if error != nil {
-                return
-            }
-            
-            if let data = data,
-               let coinResult = try? JSONDecoder().decode(CoinsRequest.self, from: data) {
-                var myCoins : [Coin] = []
-                
-                for i in coinResult.coins{
-                    
-                    let roundedPrice = "$" + String(round(100 * i.price) / 100)
-                    
-                    
-                    myCoins.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
-                    
-                    
-                }
-                self.filteredData = myCoins
-                completionHandler(myCoins)
-            }
-        })
-        task.resume()
-    }
 }
 
 // MARK: - UICollectionViewDataSource
