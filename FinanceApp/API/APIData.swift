@@ -38,3 +38,7 @@ struct CoinData: Codable {
         case redditURL = "redditUrl"
     }
 }
+
+struct ChartData: Codable {
+    let chart: [[Double]]
+}
