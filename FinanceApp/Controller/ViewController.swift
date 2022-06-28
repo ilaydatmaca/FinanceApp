@@ -20,9 +20,9 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         super.viewDidLoad()
         
         
-        fetchAny(urlString: "https://api.coinstats.app/public/v1/coins", CoinsRequest.self) { [weak self] coins1 in
+        fetchAny(urlString: "https://api.coinstats.app/public/v1/coins", CoinsRequest.self) { [weak self] coinsArr in
             
-            for i in coins1.coins{
+            for i in coinsArr.coins{
                 let roundedPrice = "$" + String(round(100 * i.price) / 100)
                 
                 self!.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank))
@@ -35,27 +35,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
             }
             
         }
-        
-        fetchAny(urlString: "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum", ChartData.self) { [weak self] coins1 in
-
-            for i in coins1.chart{
-                print(i[1])
-                self!.graphData.append(i[1])
-
-            }
-            
-            print(coins1.chart.count)
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-            
-        }
-        
-        
-        
-        
-
-        
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
     }
