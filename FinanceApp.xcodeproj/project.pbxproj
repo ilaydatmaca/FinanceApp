@@ -12,7 +12,7 @@
 		C622F4E32866F7DF00C89F0E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622F4E22866F7DF00C89F0E /* ImageLoader.swift */; };
 		C64E37FC2861E40500226609 /* CoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FB2861E40500226609 /* CoinCollectionViewCell.swift */; };
 		C64E37FE2861E57E00226609 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E37FD2861E57E00226609 /* Coin.swift */; };
-		C65C7CB4286B751000199A50 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65C7CB3286B751000199A50 /* Charts.framework */; };
+		C65C7CB4286B751000199A50 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65C7CB3286B751000199A50 /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C66621D82864557700E2F040 /* ViewDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D72864557700E2F040 /* ViewDetailsController.swift */; };
 		C66621DA28648A5F00E2F040 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66621D928648A5F00E2F040 /* APIData.swift */; };
 		C9A430AA285C9CE100CC0678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430A9285C9CE100CC0678 /* AppDelegate.swift */; };
