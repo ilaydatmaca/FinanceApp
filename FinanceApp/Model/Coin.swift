@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//coin attributes
 
 struct Coin{
     let name : String

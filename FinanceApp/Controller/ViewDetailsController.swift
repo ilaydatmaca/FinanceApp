@@ -7,6 +7,7 @@
 
 import UIKit
 
+//for the details screen
 class ViewDetailsController: UIViewController {
 
     @IBOutlet weak var coinIcon: UIImageView!
