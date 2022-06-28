@@ -14,7 +14,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     
     private var coinsList: [Coin] = [] //all coins in the api
     var filteredData : [Coin] = []//filtered coins if there is a seach
-    
+    var graphData : [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,25 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
             }
             
         }
+        
+        fetchAny(urlString: "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum", ChartData.self) { [weak self] coins1 in
+
+            for i in coins1.chart{
+                print(i[1])
+                self!.graphData.append(i[1])
+
+            }
+            
+            print(coins1.chart.count)
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+            
+        }
+        
+        
+        
+        
 
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -70,6 +89,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
             }
             
         })
+
         task.resume()
     }
     
