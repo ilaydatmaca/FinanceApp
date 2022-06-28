@@ -22,6 +22,7 @@
 		C9A430C1285C9CE200CC0678 /* FinanceAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430C0285C9CE200CC0678 /* FinanceAppTests.swift */; };
 		C9A430CB285C9CE200CC0678 /* FinanceAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430CA285C9CE200CC0678 /* FinanceAppUITests.swift */; };
 		C9A430CD285C9CE200CC0678 /* FinanceAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A430CC285C9CE200CC0678 /* FinanceAppUITestsLaunchTests.swift */; };
+		C9E3E2AE286AE3C0008AF0E5 /* montserrat in Resources */ = {isa = PBXBuildFile; fileRef = C9E3E2AD286AE3C0008AF0E5 /* montserrat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C9A430C6285C9CE200CC0678 /* FinanceAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinanceAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A430CA285C9CE200CC0678 /* FinanceAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceAppUITests.swift; sourceTree = "<group>"; };
 		C9A430CC285C9CE200CC0678 /* FinanceAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C9E3E2AD286AE3C0008AF0E5 /* montserrat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = montserrat; path = ../../montserrat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				C9A430A9285C9CE100CC0678 /* AppDelegate.swift */,
 				C9A430AB285C9CE100CC0678 /* SceneDelegate.swift */,
 				C9A430AF285C9CE100CC0678 /* Main.storyboard */,
+				C9E3E2AD286AE3C0008AF0E5 /* montserrat */,
 				C9A430B2285C9CE200CC0678 /* Assets.xcassets */,
 				C9A430B4285C9CE200CC0678 /* LaunchScreen.storyboard */,
 				C9A430B7285C9CE200CC0678 /* Info.plist */,
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A430B6285C9CE200CC0678 /* LaunchScreen.storyboard in Resources */,
+				C9E3E2AE286AE3C0008AF0E5 /* montserrat in Resources */,
 				C9A430B3285C9CE200CC0678 /* Assets.xcassets in Resources */,
 				C9A430B1285C9CE100CC0678 /* Main.storyboard in Resources */,
 			);
