@@ -7,7 +7,11 @@
 		<key>FinanceApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>4</integer>
+=======
+			<integer>5</integer>
+>>>>>>> 38e77849c246e5647b387140e1b7730bb82f2d5f
 		</dict>
 	</dict>
 </dict>
