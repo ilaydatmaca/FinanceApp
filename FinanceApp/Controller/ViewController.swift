@@ -37,6 +37,21 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         }
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
+        fetchAny(urlString: "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum", ChartData.self) { [weak self] coinsArr in
+            
+            for i in coinsArr.chart{
+                
+                self?.graphData.append(i[0])
+                
+            }
+            
+            
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+            
+        }
+
     }
     
     
