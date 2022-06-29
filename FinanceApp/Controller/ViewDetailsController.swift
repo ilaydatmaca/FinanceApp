@@ -32,7 +32,8 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var marketDatatitle: UILabel!
     @IBOutlet weak var btcPrice: UILabel!
     
-    
+    @IBOutlet weak var perDaily: UILabel!
+    @IBOutlet weak var perWeekly: UILabel!
     
     lazy var lineChartView : LineChartView = {
         let chartView = LineChartView()
@@ -127,6 +128,9 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         marketCaptitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         volumetitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         ranktitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
+        
+        perDaily.text = String(ViewDetailsController.currentCoin.priceChange1D)
+        perWeekly.text = String(ViewDetailsController.currentCoin.priceChange1W)
     }
     
 }

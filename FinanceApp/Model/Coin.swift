@@ -19,5 +19,7 @@ struct Coin{
     let marketCap : Double
     let volume : Double
     let rank : Int
+    let priceChange1D : Double
+    let priceChange1W : Double
 }
 

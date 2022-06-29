@@ -152,6 +152,23 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nND-EB-iut">
                                 <rect key="frame" x="20" y="108" width="70" height="70.5"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="104" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-tO-Zrl">
+                                <rect key="frame" x="98" y="133" width="296.5" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coinName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5r-VY-oGq">
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coinShortening" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-cY-dcm">
+                                        <rect key="frame" x="181" y="0.0" width="115.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Lgc-2L-yg9">
                                 <rect key="frame" x="20" y="187" width="70" height="48"/>
                                 <subviews>
@@ -163,6 +180,23 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="btcPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHF-bA-CXI">
                                         <rect key="frame" x="0.0" y="27.5" width="70" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="yqQ-bv-lax">
+                                <rect key="frame" x="280" y="187" width="114" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percentDaily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ1-iO-Myd">
+                                        <rect key="frame" x="0.0" y="0.0" width="114" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percentWeekly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ja-th-3aO">
+                                        <rect key="frame" x="0.0" y="27.5" width="114" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -234,23 +268,6 @@
                                     <constraint firstItem="QDy-OC-zPO" firstAttribute="leading" secondItem="0wL-Pi-RLa" secondAttribute="leading" constant="306" id="Xg2-ri-WZ7"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="104" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-tO-Zrl">
-                                <rect key="frame" x="98" y="133" width="296.5" height="20.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coinName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5r-VY-oGq">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coinShortening" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-cY-dcm">
-                                        <rect key="frame" x="181" y="0.0" width="115.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Zz-5a-Vkq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -289,6 +306,8 @@
                         <outlet property="marketCap" destination="b4J-9p-eO9" id="HLE-gA-557"/>
                         <outlet property="marketCaptitle" destination="QTq-5P-Gzq" id="s3Y-FH-bhI"/>
                         <outlet property="marketDatatitle" destination="Zcf-Rt-AmE" id="Txg-p0-5nP"/>
+                        <outlet property="perDaily" destination="EZ1-iO-Myd" id="zj0-zY-c09"/>
+                        <outlet property="perWeekly" destination="9ja-th-3aO" id="paK-SD-PWR"/>
                         <outlet property="rank" destination="enU-gx-VpY" id="BNm-tR-8pa"/>
                         <outlet property="ranktitle" destination="aEE-Io-q6X" id="8FW-MZ-mPT"/>
                         <outlet property="volume" destination="DAy-jK-VDI" id="cbM-V2-CEH"/>
