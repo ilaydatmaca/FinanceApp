@@ -17,7 +17,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
     var graphData : [Double] = []
     
     override func viewDidLoad() {
-        print("asdasd")
         super.viewDidLoad()
         
         
