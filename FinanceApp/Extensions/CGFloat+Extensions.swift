@@ -11,4 +11,14 @@ extension CGFloat {
     static var halfSizeOfScreen: CGFloat {
         UIScreen.main.bounds.width / 2
     }
+    
+    static var billion : CGFloat{
+        1000000000
+    }
+    
+    static func roundTo(num : Double) -> Double{
+        return 0.0
+    }
 }
+
+
