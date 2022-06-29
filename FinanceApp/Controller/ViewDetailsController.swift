@@ -48,8 +48,12 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
         chartView.xAxis.setLabelCount(6, force: false)
-        chartView.xAxis.labelTextColor = .white
-        chartView.xAxis.axisLineColor = .systemBlue
+        chartView.xAxis.labelTextColor = .black
+        chartView.xAxis.axisLineColor = .black
+        
+        chartView.xAxis.gridColor = .clear
+        chartView.leftAxis.gridColor = .clear
+        chartView.rightAxis.gridColor = .clear
         
         chartView.animate(xAxisDuration: 2.5)
         
@@ -59,9 +63,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         view.addSubview(lineChartView)
         lineChartView.centerInSuperview()
         lineChartView.width(to : view)
@@ -71,39 +72,35 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         setUpDetail()
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-    }
     
     func setData()
     {
         
         var lineChartEntry = [ChartDataEntry]()
-        ViewController.viewObj.fetchAny(urlString: "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum", ChartData.self) { [weak self] coinsArr in
+        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1m&coinId=" + ViewDetailsController.currentCoin.name.lowercased()
+        
+        ViewController.viewObj.fetchAny(urlString: urlStr, ChartData.self) { [weak self] coinsArr in
             
             for i in 0..<coinsArr.chart.count{
                 
                 let entrySet = ChartDataEntry(x: Double(i), y: coinsArr.chart[i][1])
                 lineChartEntry.append(entrySet)
-                print(lineChartEntry)
             }
             
-            let set1 = LineChartDataSet(entries: lineChartEntry, label: "Subscribers")
+            let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices")
             
             set1.mode = .cubicBezier
             set1.drawCirclesEnabled = false
             set1.lineWidth = 3
-            set1.setColor(.white)
-            //set1.fill = Fill(UIColor : .white)
+            set1.setColor(.gray)
+            set1.fillColor = .gray
             set1.fillAlpha = 0.8
             set1.drawFilledEnabled = true
             
-            
             set1.drawHorizontalHighlightIndicatorEnabled = false
-            set1.highlightColor = .systemRed
+            set1.highlightColor = .systemGray
             let data = LineChartData(dataSet: set1)
             data.setDrawValues(false)
-            
-            
             self!.lineChartView.data = data
             
         }
