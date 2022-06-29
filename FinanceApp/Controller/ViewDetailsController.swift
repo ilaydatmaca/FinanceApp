@@ -35,41 +35,38 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var perDaily: UILabel!
     @IBOutlet weak var perWeekly: UILabel!
     
-    lazy var lineChartView : LineChartView = {
-        let chartView = LineChartView()
-        chartView.backgroundColor = .white
-        chartView.rightAxis.enabled = false
+    @IBOutlet weak var chartview: LineChartView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let yAxis = chartView.leftAxis
+        
+        chartview.backgroundColor = .white
+        chartview.rightAxis.enabled = false
+        
+        let yAxis = chartview.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 12)
         yAxis.setLabelCount(6, force: false)
         yAxis.labelTextColor = .black
         yAxis.axisLineColor = .black
         yAxis.labelPosition = .insideChart
-        chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
-        chartView.xAxis.setLabelCount(6, force: false)
-        chartView.xAxis.labelTextColor = .black
-        chartView.xAxis.axisLineColor = .black
+        chartview.xAxis.labelPosition = .bottom
+        chartview.xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        chartview.xAxis.setLabelCount(6, force: false)
+        chartview.xAxis.labelTextColor = .black
+        chartview.xAxis.axisLineColor = .black
         
-        chartView.xAxis.gridColor = .clear
-        chartView.leftAxis.gridColor = .clear
-        chartView.rightAxis.gridColor = .clear
+        chartview.xAxis.gridColor = .clear
+        chartview.leftAxis.gridColor = .clear
+        chartview.rightAxis.gridColor = .clear
         
-        chartView.animate(xAxisDuration: 2.5)
+        chartview.animate(xAxisDuration: 2.5)
         
-        return chartView
-    }()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(lineChartView)
-        lineChartView.centerInSuperview()
-        lineChartView.width(to : view)
-        lineChartView.heightToWidth(of: view)
         
-        setData()
+        DispatchQueue.main.async {
+            self.setData()
+        }
         setUpDetail()
     }
     
@@ -102,7 +99,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             set1.highlightColor = .systemGray
             let data = LineChartData(dataSet: set1)
             data.setDrawValues(false)
-            self!.lineChartView.data = data
+            self!.chartview.data = data
             
         }
     }

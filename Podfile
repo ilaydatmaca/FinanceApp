@@ -7,7 +7,7 @@ target 'FinanceApp' do
 
   # Pods for FinanceApp
   pod 'Charts'
-pod 'TinyConstraints'
+  pod 'TinyConstraints'
 
   target 'FinanceAppTests' do
     inherit! :search_paths
