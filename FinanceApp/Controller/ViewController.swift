@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import TinyConstraints
 
 final class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
     
