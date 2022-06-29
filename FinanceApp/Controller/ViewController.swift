@@ -6,15 +6,25 @@
 //
 
 import UIKit
+import Charts
 
-final class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
+class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var coinsList: [Coin] = [] //all coins in the api
     var filteredData : [Coin] = []//filtered coins if there is a seach
-    var graphData : [Double] = []
+    
+    
+    class var viewObj : ViewController {
+        struct Static {
+            static let instance : ViewController = ViewController()
+        }
+        return Static.instance
+    
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +47,6 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITextVie
         }
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
-        fetchAny(urlString: "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum", ChartData.self) { [weak self] coinsArr in
-            
-            for i in coinsArr.chart{
-                
-                self?.graphData.append(i[0])
-                
-            }
-            
-            
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-            
-        }
 
     }
     
