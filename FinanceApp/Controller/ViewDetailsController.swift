@@ -55,13 +55,13 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         yAxis.labelFont = .boldSystemFont(ofSize: 12)
         yAxis.setLabelCount(6, force: false)
         yAxis.labelTextColor = .black
-        yAxis.axisLineColor = .black
+        yAxis.axisLineColor = .white
         yAxis.labelPosition = .insideChart
         chartview.xAxis.labelPosition = .bottom
         chartview.xAxis.labelFont = .boldSystemFont(ofSize: 12)
         chartview.xAxis.setLabelCount(6, force: false)
         chartview.xAxis.labelTextColor = .black
-        chartview.xAxis.axisLineColor = .black
+        chartview.xAxis.axisLineColor = .white
         
         chartview.setViewPortOffsets(left: 0, top: 0, right: 0, bottom: 0)
         
@@ -90,7 +90,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             
             DispatchQueue.main.async {
                 let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
-                
                 
                 set1.mode = .cubicBezier
                 set1.drawCirclesEnabled = false
