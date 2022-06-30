@@ -4,7 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Montserrat-Medium.otf</string>
 		<string>Montserrat-Regular.otf</string>
+		<string>Montserrat-Bold.otf</string>
+		<string>Montserrat-Thin.otf</string>
+		<string>Montserrat-SemiBold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

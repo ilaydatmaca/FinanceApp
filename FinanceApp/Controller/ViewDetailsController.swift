@@ -15,7 +15,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     static var currentCoin : Coin!
     @IBOutlet weak var chartview: LineChartView!
-
+    
     
     @IBOutlet weak var coinIcon: UIImageView!
     @IBOutlet weak var coinName: UILabel!
@@ -26,7 +26,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var marketCap: UILabel!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var rank: UILabel!
-        
+    
     @IBOutlet weak var ranktitle: UILabel!
     @IBOutlet weak var volumetitle: UILabel!
     @IBOutlet weak var marketCaptitle: UILabel!
@@ -64,7 +64,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.xAxis.axisLineColor = .black
         
         chartview.setViewPortOffsets(left: 0, top: 0, right: 0, bottom: 0)
-
+        
         chartview.xAxis.gridColor = .clear
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
@@ -91,7 +91,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             DispatchQueue.main.async {
                 let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
                 
-
+                
                 set1.mode = .cubicBezier
                 set1.drawCirclesEnabled = false
                 set1.lineWidth = 3
@@ -132,11 +132,25 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
         
-
+        
+        coinName.font = UIFont(name:"Montserrat-Medium", size: 18.0)
+        coinPrice.font = UIFont(name:"Montserrat-Medium", size: 19.0)
+        coinShortening.font = UIFont(name:"Montserrat-Medium", size: 18.0)
+        btcPrice.font = UIFont(name:"Montserrat-Medium", size: 17.0)
+        
         rank.font = UIFont(name: "Montserrat-Regular", size: 15)
+        marketCap.font = UIFont(name: "Montserrat-Regular", size: 15)
+        volume.font = UIFont(name: "Montserrat-Regular", size: 15)
 
-            
-    
+        ranktitle.font = UIFont(name: "Montserrat-Medium", size: 15)
+        marketCaptitle.font = UIFont(name: "Montserrat-Medium", size: 15)
+        volumetitle.font = UIFont(name: "Montserrat-Medium", size: 15)
+        marketDatatitle.font = UIFont(name: "Montserrat-Medium", size: 15)
+        
+        perWeekly.font = UIFont(name: "Montserrat-Medium", size: 17)
+        perDaily.font = UIFont(name: "Montserrat-Medium", size: 17)
+
+
         btcPrice.textColor = UIColor(red: 0.3451, green: 0.4039, blue: 0.3333, alpha: 1.0)
         marketDatatitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
@@ -144,8 +158,8 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         volumetitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         ranktitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
-
-
+        
+        
         perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
         
         perWeekly.text = ViewDetailsController.currentCoin.priceChange1W > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1W) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1W)
