@@ -13,6 +13,9 @@ import TinyConstraints
 //for the details screen
 class ViewDetailsController: UIViewController, ChartViewDelegate {
     
+    static var currentCoin : Coin!
+    @IBOutlet weak var chartview: LineChartView!
+
     
     @IBOutlet weak var coinIcon: UIImageView!
     @IBOutlet weak var coinName: UILabel!
@@ -23,9 +26,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var marketCap: UILabel!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var rank: UILabel!
-    
-    static var currentCoin : Coin!
-    
+        
     @IBOutlet weak var ranktitle: UILabel!
     @IBOutlet weak var volumetitle: UILabel!
     @IBOutlet weak var marketCaptitle: UILabel!
@@ -35,13 +36,18 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var perDaily: UILabel!
     @IBOutlet weak var perWeekly: UILabel!
     
-    @IBOutlet weak var chartview: LineChartView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        setChart()
+        setData()
+        setUpDetail()
+    }
+    
+    func setChart() {
         chartview.backgroundColor = .white
         chartview.rightAxis.enabled = false
         
@@ -60,60 +66,56 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.xAxis.gridColor = .clear
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
-
+        
         chartview.animate(xAxisDuration: 2.5)
-        
-        
-        DispatchQueue.main.async {
-            self.setData()
-        }
-        setUpDetail()
     }
-    
     
     func setData()
     {
-        
         var lineChartEntry = [ChartDataEntry]()
-        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1w&coinId=" + ViewDetailsController.currentCoin.name.lowercased()
-        
-        ViewController.viewObj.fetchAny(urlString: urlStr, ChartData.self) { [weak self] coinsArr in
+        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1w&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
+        URLLoader.sharedInstance.anyForUrl(typeStr: "str", urlString: urlStr,
+                                           typeClass: ChartData.self) {[self] (image, url, result) in
             
-            for i in 0..<coinsArr.chart.count{
+            if(result?.chart.count == 0){
+                return
+            }
+            for i in 0..<result!.chart.count{
                 
-                let entrySet = ChartDataEntry(x: Double(i), y: coinsArr.chart[i][1])
+                let entrySet = ChartDataEntry(x: Double(i), y: result!.chart[i][1])
                 lineChartEntry.append(entrySet)
             }
             
-            let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices")
-            
-            set1.mode = .cubicBezier
-            set1.drawCirclesEnabled = false
-            set1.lineWidth = 3
             DispatchQueue.main.async {
-            set1.setColor(self!.perWeekly.textColor)
-            set1.fillColor = (self?.perWeekly.textColor)!
+                let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices")
+                
+                set1.mode = .cubicBezier
+                set1.drawCirclesEnabled = false
+                set1.lineWidth = 3
+                set1.setColor(self.perWeekly.textColor)
+                set1.fillColor = (self.perWeekly.textColor)!
+                
+                
+                set1.fillAlpha = 0.8
+                set1.drawFilledEnabled = true
+                
+                set1.drawHorizontalHighlightIndicatorEnabled = false
+                set1.highlightColor = .systemGray
+                let data = LineChartData(dataSet: set1)
+                data.setDrawValues(false)
+                self.chartview.data = data
+                let colorX = self.perWeekly.textColor
+                let gradColors = [UIColor.white.cgColor, colorX!.cgColor]
+                let colorLocations:[CGFloat] = [0.0, 1.0]
+                if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradColors as CFArray, locations: colorLocations) {
+                    set1.fill = LinearGradientFill(gradient: gradient, angle: 90.0)
+                }
+                
             }
-            
-            
-            set1.fillAlpha = 0.8
-            set1.drawFilledEnabled = true
-            
-            set1.drawHorizontalHighlightIndicatorEnabled = false
-            set1.highlightColor = .systemGray
-            let data = LineChartData(dataSet: set1)
-            data.setDrawValues(false)
-            self!.chartview.data = data
-            let colorX = self!.perWeekly.textColor
-            let gradColors = [UIColor.white.cgColor, colorX!.cgColor]
-            let colorLocations:[CGFloat] = [0.0, 1.0]
-            if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradColors as CFArray, locations: colorLocations) {
-                set1.fill = LinearGradientFill(gradient: gradient, angle: 90.0)
-            }
-            
         }
+        
     }
-
+    
     
     
     func setUpDetail(){
@@ -144,13 +146,13 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         }
         else{
             perDaily.textColor =  UIColor.green
-
+            
         }
         if ViewDetailsController.currentCoin.priceChange1W < 0{
             perWeekly.textColor = UIColor.red
         }else{
             perWeekly.textColor = UIColor.green
-
+            
         }
     }
     

@@ -1,44 +1,72 @@
+
 import UIKit
 
-class ImageLoader {
+class URLLoader {
     
     var cache = NSCache<AnyObject, AnyObject>()
     
-    class var sharedInstance : ImageLoader {
+    class var sharedInstance : URLLoader {
         struct Static {
-            static let instance : ImageLoader = ImageLoader()
+            static let instance : URLLoader = URLLoader()
         }
         return Static.instance
     }
     
-    func imageForUrl(urlString: String, completionHandler:@escaping (_ image: UIImage?, _ url: String) -> ()) {
+    func anyForUrl<T : Decodable>(typeStr : String?, urlString: String,  typeClass : T.Type? = nil, completionHandler:@escaping (_ image: UIImage?, _ url: String ,_ typereturn : T?) -> ()) {
+        
         let data: NSData? = self.cache.object(forKey: urlString as AnyObject) as? NSData
         
         // Check for a cached image.
-        if let imageData = data {
-            let image = UIImage(data: imageData as Data)
-            DispatchQueue.main.async {
-                completionHandler(image, urlString)
+        if let data = data {
+            if typeStr == "image"{
+                let image = UIImage(data: data as Data)
+                DispatchQueue.main.async {
+                    completionHandler(image, urlString, nil)
+                }
+                return
             }
-            return
+            else if typeStr == "str"{
+                let coinResult = try? JSONDecoder().decode(T.self, from: data as Data)
+                DispatchQueue.main.async {
+                    completionHandler(nil, urlString, coinResult)
+                }
+                return
+            }
+            
         }
         
         // Go fetch the image.
         // Cache the image.
-
+        
+        
         let downloadTask: URLSessionDataTask = URLSession.shared.dataTask(with: URL.init(string: urlString)!) { (data, response, error) in
+            if(data == nil){
+                return
+            }
             
             //check there is not an error and data is not null
             if error == nil {
                 if data != nil {
-                    let image = UIImage.init(data: data!)
-                    self.cache.setObject(data! as AnyObject, forKey: urlString as AnyObject)//load the cache
-                    DispatchQueue.main.async {
-                        completionHandler(image, urlString)
+                    
+                    if typeStr == "image"{
+                        
+                        let image = UIImage.init(data: data!)
+                        self.cache.setObject(data! as AnyObject, forKey: urlString as AnyObject)//load the cache
+                        DispatchQueue.main.async {
+                            completionHandler(image, urlString, nil)
+                        }
+                    }
+                    else if typeStr == "str"{
+                        
+                        let coinResult = try? JSONDecoder().decode(T.self, from: data! as Data)
+                        self.cache.setObject(data! as AnyObject, forKey: urlString as AnyObject)//load the cache
+                        DispatchQueue.main.async {
+                            completionHandler(nil, urlString, coinResult)
+                        }
                     }
                 }
             } else { //else return empty
-                completionHandler(nil, urlString)
+                completionHandler(nil, urlString, nil)
             }
         }
         downloadTask.resume()

@@ -17,37 +17,30 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
     var filteredData : [Coin] = []//filtered coins if there is a seach
     
     
-    class var viewObj : ViewController {
-        struct Static {
-            static let instance : ViewController = ViewController()
-        }
-        return Static.instance
-    
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        fetchAny(urlString: "https://api.coinstats.app/public/v1/coins", CoinsRequest.self) { [weak self] coinsArr in
+        URLLoader.sharedInstance.anyForUrl(typeStr: "str", urlString: "https://api.coinstats.app/public/v1/coins",
+                                           typeClass: CoinsRequest.self) {[self] (image, url, result) in
             
-            for i in coinsArr.coins{
+            for i in result!.coins{
                 let roundedPrice = "$" + String(round(100 * i.price) / 100)
                 
-                self!.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
-                
+                self.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
             }
             
             DispatchQueue.main.async {
-                self?.filteredData = self?.coinsList ?? []
-                self?.collectionView.reloadData()
+                self.filteredData = self.coinsList
+                self.collectionView.reloadData()
             }
             
         }
+        
+        
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
-
+        
     }
     
     
@@ -64,37 +57,21 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
         }
     }
     
-    func fetchAny<T : Decodable>(urlString: String,_ typeClass: T.Type, completionHandler: @escaping (T) -> Void) {
-        
-        guard let url = URL(string: urlString) else { return}
-        
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            if error != nil {
-                return
-            }
-            
-            if let data = data,
-               let coinResult = try? JSONDecoder().decode(T.self, from: data) {
-                completionHandler(coinResult)
-            }
-            
-        })
-
-        task.resume()
-    }
-    
 }
 
 // MARK: - UICollectionViewDataSource
 extension ViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {//this function is calling for cells in the screen
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         
         let urlString = filteredData[indexPath.row].imageURLString //take url string for each cell in the screen
         
-        ImageLoader.sharedInstance.imageForUrl(urlString: urlString, completionHandler: { [self] (image, url) in
-            if(filteredData.count == 0){//if the result is empty then return back
+        
+        URLLoader.sharedInstance.anyForUrl(typeStr: "image", urlString: urlString, typeClass: CoinsRequest.self) {[self] (image, url, returnObj) in
+            if(self.filteredData.count == 0){//if the result is empty then return back
                 return
             }
             
@@ -103,9 +80,10 @@ extension ViewController : UICollectionViewDataSource{
                 self.coinsList[indexPath.row].image = image!
                 cell.setup(with: filteredData[indexPath.row])
             }
-        })
+        }
         
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {//filtered data count
