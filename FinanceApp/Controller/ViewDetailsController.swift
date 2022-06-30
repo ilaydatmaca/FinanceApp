@@ -122,13 +122,13 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         coinIcon.image = ViewDetailsController.currentCoin.image
         coinName.text = ViewDetailsController.currentCoin.name
         coinShortening.text = ViewDetailsController.currentCoin.shortening
-        coinPrice.text = ViewDetailsController.currentCoin.price
+        coinPrice.text = "$" + String(format: "%.3f", ViewDetailsController.currentCoin.price)
         
         marketCap.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.marketCap / CGFloat.billion ) + "B"
         
         volume.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion ) + "B"
         rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
-        btcPrice.text = String(format: "%.2f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
+        btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
         
         
         btcPrice.textColor = UIColor(red: 0.3451, green: 0.4039, blue: 0.3333, alpha: 1.0)
@@ -139,7 +139,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         ranktitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
 
-        
+
         perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
         
         perWeekly.text = ViewDetailsController.currentCoin.priceChange1W > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1W) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1W)

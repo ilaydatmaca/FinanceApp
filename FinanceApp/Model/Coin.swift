@@ -12,7 +12,7 @@ struct Coin{
     let name : String
     var image : UIImage
     let shortening : String
-    let price : String
+    let price : Double
     let buttonID : Int
     let imageURLString : String
     let btcPrice : Double

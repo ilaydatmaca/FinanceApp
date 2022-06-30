@@ -25,9 +25,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
                                            typeClass: CoinsRequest.self) {[self] (image, url, result) in
             
             for i in result!.coins{
-                let roundedPrice = "$" + String(round(100 * i.price) / 100)
                 
-                self.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: roundedPrice, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
+                self.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: i.price, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
             }
             
             DispatchQueue.main.async {

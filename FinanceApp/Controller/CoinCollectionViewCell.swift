@@ -22,7 +22,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         coinName.text = coin.name
         coinImage.image = coin.image
         coinShortening.text = coin.shortening
-        coinPrice.text = coin.price
+        coinPrice.text = "$" + String(format: "%.2f", coin.price)
         imageButton.tag = coin.buttonID
         coinName.font = UIFont(name:"Montserrat-SemiBold", size: 17.0)
         coinShortening.font = UIFont(name:"Montserrat-Regular", size: 16.0)
