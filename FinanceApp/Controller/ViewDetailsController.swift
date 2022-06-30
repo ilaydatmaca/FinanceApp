@@ -37,13 +37,36 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var perWeekly: UILabel!
     
     
+    @IBAction func tap1D(_ sender: UIButton) {
+        setData(typePeriod: "24h")
+    }
+    
+    @IBAction func tap1W(_ sender: UIButton) {
+        setData(typePeriod: "1w")
+    }
+    
+    @IBAction func tap1M(_ sender: UIButton) {
+        setData(typePeriod: "1m")
+    }
+    
+    @IBAction func tap3M(_ sender: UIButton) {
+        setData(typePeriod: "3m")
+    }
+    
+    @IBAction func tap6M(_ sender: UIButton) {
+        setData(typePeriod: "6m")
+    }
+    @IBAction func tap1Y(_ sender: UIButton) {
+        setData(typePeriod: "1y")
+    }
+    @IBAction func tapAll(_ sender: UIButton) {
+        setData(typePeriod: "all")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setChart()
-        setData()
+        setData(typePeriod: "1w")
         setUpDetail()
     }
     
@@ -72,10 +95,10 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.animate(xAxisDuration: 2.5)
     }
     
-    func setData()
+    func setData(typePeriod : String)
     {
         var lineChartEntry = [ChartDataEntry]()
-        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1w&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
+        let urlStr = "https://api.coinstats.app/public/v1/charts?period=" + typePeriod + "&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
         URLLoader.sharedInstance.anyForUrl(typeStr: "str", urlString: urlStr,
                                            typeClass: ChartData.self) {[self] (image, url, result) in
             
@@ -89,6 +112,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             }
             
             DispatchQueue.main.async {
+                setChart()
                 let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
                 
                 set1.mode = .cubicBezier
@@ -115,6 +139,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             }
         }
         
+        
     }
     
     
@@ -140,7 +165,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         rank.font = UIFont(name: "Montserrat-Regular", size: 15)
         marketCap.font = UIFont(name: "Montserrat-Regular", size: 15)
         volume.font = UIFont(name: "Montserrat-Regular", size: 15)
-
+        
         ranktitle.font = UIFont(name: "Montserrat-Medium", size: 15)
         marketCaptitle.font = UIFont(name: "Montserrat-Medium", size: 15)
         volumetitle.font = UIFont(name: "Montserrat-Medium", size: 15)
@@ -148,8 +173,8 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         
         perWeekly.font = UIFont(name: "Montserrat-Medium", size: 17)
         perDaily.font = UIFont(name: "Montserrat-Medium", size: 17)
-
-
+        
+        
         btcPrice.textColor = UIColor(red: 0.3451, green: 0.4039, blue: 0.3333, alpha: 1.0)
         marketDatatitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
@@ -180,3 +205,4 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     
 }
+
