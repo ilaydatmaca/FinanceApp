@@ -4,15 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>montserrat/Montserrat-Black.otf</string>
-		<string>montserrat/Montserrat-Bold.otf</string>
-		<string>montserrat/Montserrat-Light.otf</string>
-		<string>montserrat/Montserrat-Thin.otf</string>
-		<string>montserrat/Montserrat-Medium.otf</string>
-		<string>montserrat/Montserrat-SemiBold.otf</string>
-		<string>montserrat/Montserrat-Regular.otf</string>
-		<string>montserrat/MontserratAlternates-Regular.otf</string>
-		<string>montserrat/Montserrat-Medium.otf</string>
+		<string>Montserrat-Regular.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -63,6 +63,8 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.xAxis.labelTextColor = .black
         chartview.xAxis.axisLineColor = .black
         
+        chartview.setViewPortOffsets(left: 0, top: 0, right: 0, bottom: 0)
+
         chartview.xAxis.gridColor = .clear
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
@@ -89,12 +91,12 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             DispatchQueue.main.async {
                 let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
                 
+
                 set1.mode = .cubicBezier
                 set1.drawCirclesEnabled = false
                 set1.lineWidth = 3
                 set1.setColor(self.perWeekly.textColor)
                 set1.fillColor = (self.perWeekly.textColor)!
-                
                 
                 set1.fillAlpha = 0.8
                 set1.drawFilledEnabled = true
@@ -130,7 +132,11 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
         
-        
+
+        rank.font = UIFont(name: "Montserrat-Regular", size: 15)
+
+            
+    
         btcPrice.textColor = UIColor(red: 0.3451, green: 0.4039, blue: 0.3333, alpha: 1.0)
         marketDatatitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
