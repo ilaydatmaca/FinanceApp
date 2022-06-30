@@ -36,36 +36,57 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var perDaily: UILabel!
     @IBOutlet weak var perWeekly: UILabel!
     
+    enum Times : Int{
+        case graph1D = 0
+        case graph1W = 1
+        case graph1M = 2
+        case graph3M = 3
+        case graph6M = 4
+        case graph1Y = 5
+        case graphAll = 6
+    }
+    var curTime = Times.graph1W.rawValue
+    var curButton = UIButton()
     
-    @IBAction func tap1D(_ sender: UIButton) {
-        setData(typePeriod: "24h")
+    
+    @IBAction func allButtons(_ sender: UIButton) {
+        if sender.tag == curTime{
+            return
+        }
+        curButton.tintColor = .gray
+        sender.tintColor = .black
+        curButton = sender
+        
+        switch sender.tag{
+        case 0:
+            curTime = Times.graph1D.rawValue
+            setData(typePeriod: "24h")
+        case 1:
+            curTime = Times.graph1W.rawValue
+            setData(typePeriod: "1w")
+        case 2:
+            curTime = Times.graph1M.rawValue
+            setData(typePeriod: "1m")
+        case 3:
+            curTime = Times.graph3M.rawValue
+            setData(typePeriod: "3m")
+        case 4:
+            curTime = Times.graph6M.rawValue
+            setData(typePeriod: "6m")
+        case 5:
+            curTime = Times.graph1Y.rawValue
+            setData(typePeriod: "1y")
+        case 6:
+            curTime = Times.graphAll.rawValue
+            setData(typePeriod: "all")
+        default:
+            break
+        }
     }
     
-    @IBAction func tap1W(_ sender: UIButton) {
-        setData(typePeriod: "1w")
-    }
-    
-    @IBAction func tap1M(_ sender: UIButton) {
-        setData(typePeriod: "1m")
-    }
-    
-    @IBAction func tap3M(_ sender: UIButton) {
-        setData(typePeriod: "3m")
-    }
-    
-    @IBAction func tap6M(_ sender: UIButton) {
-        setData(typePeriod: "6m")
-    }
-    @IBAction func tap1Y(_ sender: UIButton) {
-        setData(typePeriod: "1y")
-    }
-    @IBAction func tapAll(_ sender: UIButton) {
-        setData(typePeriod: "all")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setData(typePeriod: "1w")
         setUpDetail()
     }
@@ -112,7 +133,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             }
             
             DispatchQueue.main.async {
-                setChart()
+                self.setChart()
                 let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
                 
                 set1.mode = .cubicBezier
