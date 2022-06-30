@@ -152,8 +152,9 @@
                                 </accessibility>
                                 <rect key="contentStretch" x="1" y="0.0" width="0.55000000000000004" height="1"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nND-EB-iut">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nND-EB-iut">
                                 <rect key="frame" x="20" y="108" width="70" height="70.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="104" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-tO-Zrl" userLabel="NameAndShortStack">
                                 <rect key="frame" x="98" y="133" width="296.5" height="20.5"/>

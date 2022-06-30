@@ -87,7 +87,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             }
             
             DispatchQueue.main.async {
-                let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices")
+                let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
                 
                 set1.mode = .cubicBezier
                 set1.drawCirclesEnabled = false
@@ -138,15 +138,17 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         volumetitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         ranktitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
         
-        perDaily.text = String(ViewDetailsController.currentCoin.priceChange1D)
-        perWeekly.text = String(ViewDetailsController.currentCoin.priceChange1W)
+
+        
+        perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
+        
+        perWeekly.text = ViewDetailsController.currentCoin.priceChange1W > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1W) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1W)
         
         if ViewDetailsController.currentCoin.priceChange1D < 0{
             perDaily.textColor =  UIColor.red
         }
         else{
             perDaily.textColor =  UIColor.green
-            
         }
         if ViewDetailsController.currentCoin.priceChange1W < 0{
             perWeekly.textColor = UIColor.red
@@ -155,5 +157,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             
         }
     }
+    
+    
     
 }
