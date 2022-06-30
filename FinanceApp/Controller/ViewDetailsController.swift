@@ -60,7 +60,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.xAxis.gridColor = .clear
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
-        
+
         chartview.animate(xAxisDuration: 2.5)
         
         
@@ -75,7 +75,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     {
         
         var lineChartEntry = [ChartDataEntry]()
-        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1m&coinId=" + ViewDetailsController.currentCoin.name.lowercased()
+        let urlStr = "https://api.coinstats.app/public/v1/charts?period=1w&coinId=" + ViewDetailsController.currentCoin.name.lowercased()
         
         ViewController.viewObj.fetchAny(urlString: urlStr, ChartData.self) { [weak self] coinsArr in
             
@@ -90,8 +90,12 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             set1.mode = .cubicBezier
             set1.drawCirclesEnabled = false
             set1.lineWidth = 3
-            set1.setColor(.gray)
-            set1.fillColor = .gray
+            DispatchQueue.main.async {
+            set1.setColor(self!.perWeekly.textColor)
+            set1.fillColor = (self?.perWeekly.textColor)!
+            }
+            
+            
             set1.fillAlpha = 0.8
             set1.drawFilledEnabled = true
             
@@ -100,6 +104,12 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             let data = LineChartData(dataSet: set1)
             data.setDrawValues(false)
             self!.chartview.data = data
+            let colorX = self!.perWeekly.textColor
+            let gradColors = [UIColor.white.cgColor, colorX!.cgColor]
+            let colorLocations:[CGFloat] = [0.0, 1.0]
+            if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradColors as CFArray, locations: colorLocations) {
+                set1.fill = LinearGradientFill(gradient: gradient, angle: 90.0)
+            }
             
         }
     }
@@ -128,6 +138,20 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         
         perDaily.text = String(ViewDetailsController.currentCoin.priceChange1D)
         perWeekly.text = String(ViewDetailsController.currentCoin.priceChange1W)
+        
+        if ViewDetailsController.currentCoin.priceChange1D < 0{
+            perDaily.textColor =  UIColor.red
+        }
+        else{
+            perDaily.textColor =  UIColor.green
+
+        }
+        if ViewDetailsController.currentCoin.priceChange1W < 0{
+            perWeekly.textColor = UIColor.red
+        }else{
+            perWeekly.textColor = UIColor.green
+
+        }
     }
     
 }
