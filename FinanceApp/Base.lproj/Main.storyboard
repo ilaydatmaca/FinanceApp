@@ -9,11 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="MontserratAlternates-ExtraBold.otf">
-            <string>MontserratAlternates-ExtraBold</string>
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
         </array>
-        <array key="MontserratAlternates-ExtraLight.otf">
-            <string>MontserratAlternates-ExtraLight</string>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -48,18 +51,18 @@
                                                     <rect key="frame" x="8" y="111" width="191" height="48"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUT-Tr-pzY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="191" height="22.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="191" height="28"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmw-hP-yuC">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="22.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="28"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" name="MontserratAlternates-ExtraBold" family="Montserrat Alternates" pointSize="19"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-II-B0L">
-                                                                    <rect key="frame" x="95.5" y="0.0" width="95.5" height="22.5"/>
-                                                                    <fontDescription key="fontDescription" name="MontserratAlternates-ExtraBold" family="Montserrat Alternates" pointSize="19"/>
+                                                                    <rect key="frame" x="95.5" y="0.0" width="95.5" height="28"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -68,12 +71,24 @@
                                                                 <constraint firstAttribute="height" priority="250" constant="24" id="A8H-es-DuG"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVr-in-MR3">
-                                                            <rect key="frame" x="0.0" y="22.5" width="191" height="25.5"/>
-                                                            <fontDescription key="fontDescription" name="MontserratAlternates-ExtraLight" family="Montserrat Alternates" pointSize="18"/>
-                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyO-T0-FvN">
+                                                            <rect key="frame" x="0.0" y="28" width="191" height="20"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CVr-in-MR3">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percentCoin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63O-T4-KsM">
+                                                                    <rect key="frame" x="42" y="0.0" width="149" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="k96-do-Jyo">
@@ -101,6 +116,7 @@
                                             <outlet property="coinName" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
                                             <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
+                                            <outlet property="percentCoin" destination="63O-T4-KsM" id="6nB-uI-kGL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -169,7 +185,7 @@
                                 <rect key="contentStretch" x="1" y="0.0" width="0.55000000000000004" height="1"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="sdr-Kf-MwF" userLabel="stack1">
-                                <rect key="frame" x="20" y="98" width="374" height="129"/>
+                                <rect key="frame" x="20" y="98" width="374" height="132.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-tO-Zrl" userLabel="NameAndShortStack">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
@@ -181,14 +197,14 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="coinName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5r-VY-oGq">
-                                                <rect key="frame" x="97" y="0.0" width="128.5" height="64"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="97" y="0.0" width="102" height="64"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="coinShortening" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-cY-dcm">
-                                                <rect key="frame" x="258.5" y="0.0" width="115.5" height="64"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="232" y="0.0" width="142" height="64"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -201,34 +217,34 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Obz-CM-JZ6" userLabel="line1">
-                                        <rect key="frame" x="0.0" y="76" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="76" width="374" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="coinPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldA-RE-VeM">
-                                                <rect key="frame" x="0.0" y="0.0" width="274" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="259" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="percentDaily" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ1-iO-Myd">
-                                                <rect key="frame" x="278" y="0.0" width="96" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="263" y="0.0" width="111" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OAA-YU-HBz" userLabel="line2">
-                                        <rect key="frame" x="0.0" y="108.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="111.5" width="374" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="btcPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHF-bA-CXI">
-                                                <rect key="frame" x="0.0" y="0.0" width="255" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="237.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                                                <color key="textColor" red="0.44214843072105192" green="0.49133482184072941" blue="0.43040395396740588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="percentWeekly" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ja-th-3aO">
-                                                <rect key="frame" x="260" y="0.0" width="114" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="242.5" y="0.0" width="131.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -237,7 +253,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXX-bi-22m" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="250" width="414" height="442"/>
+                                <rect key="frame" x="0.0" y="253.5" width="414" height="438.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="redraw" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-4c-kn0" userLabel="graphs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
@@ -255,7 +271,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgm-M9-BeM">
-                                                <rect key="frame" x="70.5" y="0.0" width="62.5" height="31"/>
+                                                <rect key="frame" x="70.5" y="0.0" width="62" height="31"/>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="1W"/>
@@ -264,7 +280,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-BJ-rbh">
-                                                <rect key="frame" x="141" y="0.0" width="62.5" height="31"/>
+                                                <rect key="frame" x="140.5" y="0.0" width="63" height="31"/>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="1M"/>
@@ -313,65 +329,65 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-Rt-AmE">
-                                <rect key="frame" x="20" y="707" width="130" height="24"/>
+                                <rect key="frame" x="20" y="707" width="106" height="17"/>
                                 <attributedString key="attributedText">
                                     <fragment content="MARKET DATA">
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="20"/>
+                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="0wL-Pi-RLa" userLabel="MarketStack">
-                                <rect key="frame" x="20" y="749" width="375" height="68"/>
+                                <rect key="frame" x="20" y="742" width="380" height="64"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-R3-NBl" userLabel="CapStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120.5" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARKET CAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTq-5P-Gzq">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="120.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="marketCapData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-9p-eO9">
-                                                <rect key="frame" x="0.0" y="47.5" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="45.5" width="120.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="zoE-Nt-PPt" userLabel="VolumeStack">
-                                        <rect key="frame" x="167" y="0.0" width="91" height="68"/>
+                                        <rect key="frame" x="168.5" y="0.0" width="93" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOLUME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx5-a7-UPv">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="93" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="volumeData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAy-jK-VDI">
-                                                <rect key="frame" x="0.0" y="47.5" width="91" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="45.5" width="93" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="QDy-OC-zPO" userLabel="RankStack">
-                                        <rect key="frame" x="306" y="0.0" width="69" height="68"/>
+                                        <rect key="frame" x="309.5" y="0.0" width="70.5" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RANK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEE-Io-q6X">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rankData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enU-gx-VpY">
-                                                <rect key="frame" x="0.0" y="47.5" width="69" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="45.5" width="70.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -384,7 +400,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zcf-Rt-AmE" firstAttribute="leading" secondItem="0Zz-5a-Vkq" secondAttribute="leading" constant="20" id="1u0-td-c88"/>
-                            <constraint firstItem="0Zz-5a-Vkq" firstAttribute="trailing" secondItem="0wL-Pi-RLa" secondAttribute="trailing" constant="19" id="3Pz-OF-ZEU"/>
                             <constraint firstItem="sdr-Kf-MwF" firstAttribute="top" secondItem="0Zz-5a-Vkq" secondAttribute="top" constant="10" id="4EV-h0-oUN"/>
                             <constraint firstItem="Zcf-Rt-AmE" firstAttribute="top" secondItem="gXX-bi-22m" secondAttribute="bottom" constant="15" id="E1D-L8-UaK"/>
                             <constraint firstAttribute="bottom" secondItem="gXX-bi-22m" secondAttribute="bottom" constant="204" id="EM1-Ef-ne8"/>

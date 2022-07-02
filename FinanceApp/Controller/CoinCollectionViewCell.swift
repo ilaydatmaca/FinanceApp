@@ -15,21 +15,25 @@ class CoinCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak private var coinShortening: UILabel!
     @IBOutlet weak private var coinPrice: UILabel!
-    @IBOutlet weak var coinPercent: UILabel!
     
+    @IBOutlet weak private var percentCoin: UILabel!
     
     func setup(with coin : Coin){
         coinName.text = coin.name
         coinImage.image = coin.image
+        
+        if (coin.priceChange1D >= 0){
+            percentCoin.text = String(format: "+%.2f%%", coin.priceChange1D)
+            percentCoin.textColor =  UIColor.green
+            
+        }else{
+            percentCoin.text = String(format: "%.2f%%", coin.priceChange1D)
+            percentCoin.textColor = UIColor.red
+        }
         coinShortening.text = coin.shortening
         coinPrice.text = "$" + String(format: "%.2f", coin.price)
-        coinName.font = UIFont(name:"Montserrat-SemiBold", size: 17.0)
-        coinShortening.font = UIFont(name:"Montserrat-Regular", size: 16.0)
-        coinPrice.font = UIFont(name:"Montserrat-SemiBold", size: 16.0)
-
-            
-        }
-
+    }
+    
 }
 
 
