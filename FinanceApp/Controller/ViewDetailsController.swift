@@ -43,7 +43,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         case graph3M = 3
         case graph6M = 4
         case graph1Y = 5
-        case graphAll = 6
     }
     var curTime = Times.graph1W.rawValue
     var curButton = UIButton()
@@ -76,9 +75,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         case 5:
             curTime = Times.graph1Y.rawValue
             setData(typePeriod: "1y")
-        case 6:
-            curTime = Times.graphAll.rawValue
-            setData(typePeriod: "all")
         default:
             break
         }
