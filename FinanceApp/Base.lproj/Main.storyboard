@@ -47,18 +47,18 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Ui-CW-ttp">
                                                     <rect key="frame" x="8" y="111" width="191" height="48"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UUT-Tr-pzY">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUT-Tr-pzY">
                                                             <rect key="frame" x="0.0" y="0.0" width="191" height="23.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmw-hP-yuC">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="91.5" height="23.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="23.5"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="MontserratAlternates-ExtraBold" family="Montserrat Alternates" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-II-B0L">
-                                                                    <rect key="frame" x="99.5" y="0.0" width="91.5" height="23.5"/>
+                                                                    <rect key="frame" x="95.5" y="0.0" width="95.5" height="23.5"/>
                                                                     <fontDescription key="fontDescription" name="MontserratAlternates-ExtraBold" family="Montserrat Alternates" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -87,25 +87,11 @@
                                                         <bool key="isElement" value="YES"/>
                                                     </accessibility>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vf-up-vDO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="103"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="103" id="S4Q-Tq-p3n"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain"/>
-                                                    <connections>
-                                                        <action selector="didTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yoy-PP-GjO"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6Ui-CW-ttp" secondAttribute="trailing" constant="8" id="IeL-xL-XYN"/>
                                                 <constraint firstItem="6Ui-CW-ttp" firstAttribute="leading" secondItem="GDh-lJ-ZDg" secondAttribute="leading" constant="8" id="JVa-VH-pLm"/>
                                                 <constraint firstAttribute="bottom" secondItem="6Ui-CW-ttp" secondAttribute="bottom" constant="8" id="V2U-zz-hKN"/>
-                                                <constraint firstAttribute="trailing" secondItem="5vf-up-vDO" secondAttribute="trailing" id="cRT-b6-xfG"/>
-                                                <constraint firstItem="5vf-up-vDO" firstAttribute="top" secondItem="GDh-lJ-ZDg" secondAttribute="top" id="dPc-HL-sOZ"/>
-                                                <constraint firstItem="5vf-up-vDO" firstAttribute="leading" secondItem="GDh-lJ-ZDg" secondAttribute="leading" id="eja-Ff-NEK"/>
                                                 <constraint firstItem="6Ui-CW-ttp" firstAttribute="top" secondItem="k96-do-Jyo" secondAttribute="bottom" constant="8" symbolic="YES" id="hEs-Pf-j68"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -115,7 +101,6 @@
                                             <outlet property="coinName" destination="Fmw-hP-yuC" id="1ib-W4-b9G"/>
                                             <outlet property="coinPrice" destination="Jf2-II-B0L" id="3KX-rA-Mst"/>
                                             <outlet property="coinShortening" destination="CVr-in-MR3" id="342-hS-zyI"/>
-                                            <outlet property="imageButton" destination="5vf-up-vDO" id="HXc-UQ-XqP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

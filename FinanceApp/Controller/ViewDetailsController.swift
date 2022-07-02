@@ -174,7 +174,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         marketCap.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.marketCap / CGFloat.billion ) + "B"
         
         volume.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion ) + "B"
-        rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
         
         
@@ -183,7 +182,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         coinShortening.font = UIFont(name:"Montserrat-Medium", size: 18.0)
         btcPrice.font = UIFont(name:"Montserrat-Medium", size: 17.0)
         
-        rank.font = UIFont(name: "Montserrat-Regular", size: 15)
         marketCap.font = UIFont(name: "Montserrat-Regular", size: 15)
         volume.font = UIFont(name: "Montserrat-Regular", size: 15)
         

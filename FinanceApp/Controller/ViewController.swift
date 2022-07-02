@@ -26,7 +26,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
             
             for i in result!.coins{
                 
-                self.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: i.price, buttonID: i.rank, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
+                self.coinsList.append(Coin(name: i.name, image: UIImage(), shortening: i.symbol, price: i.price, imageURLString: i.icon, btcPrice: i.priceBtc, marketCap: i.marketCap, volume: i.volume ?? 0.0 , rank: i.rank, priceChange1D: i.priceChange1D, priceChange1W: i.priceChange1W))
             }
             
             DispatchQueue.main.async {
@@ -40,14 +40,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
         
-    }
-    
-    
-    @IBAction func didTap(_ sender: UIButton){ //if you press a coin then it will open their details screen
-        if let i = filteredData.firstIndex(where: { $0.buttonID == sender.tag }) { //find the id of pressed coin
-            ViewDetailsController.currentCoin = filteredData[i]//then arrange details screen for this coin
-        }
-        performSegue(withIdentifier: "detailView", sender: self)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -116,6 +108,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 extension ViewController : UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ViewDetailsController.currentCoin = filteredData[indexPath.item]
+        performSegue(withIdentifier: "detailView", sender: self)
     }
 }
 
