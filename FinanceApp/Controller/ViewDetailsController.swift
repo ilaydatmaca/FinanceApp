@@ -44,7 +44,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        curButton.tintColor = .black
         setData(typePeriod: "1w")
         setUpDetail()
     }
@@ -169,26 +168,14 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
 
-        
-        
-    
-        
         perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
         
         perWeekly.text = ViewDetailsController.currentCoin.priceChange1W > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1W) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1W)
         
-        if ViewDetailsController.currentCoin.priceChange1D < 0{
-            perDaily.textColor =  UIColor.red
-        }
-        else{
-            perDaily.textColor =  UIColor.green
-        }
-        if ViewDetailsController.currentCoin.priceChange1W < 0{
-            perWeekly.textColor = UIColor.red
-        }else{
-            perWeekly.textColor = UIColor.green
-            
-        }
+        if ViewDetailsController.currentCoin.priceChange1D < 0 {perDaily.textColor =  UIColor.red}
+        else {perDaily.textColor =  UIColor.green}
+        if ViewDetailsController.currentCoin.priceChange1W < 0 {perWeekly.textColor = UIColor.red}
+        else {perWeekly.textColor = UIColor.green}
     }
     
     
