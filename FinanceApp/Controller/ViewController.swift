@@ -14,14 +14,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var coinsList: [Coin] = [] //all coins in the api
-    var filteredData : [Coin] = []//filtered coins if there is a seach
-    
+    var filteredCoins : [Coin] = []//filtered coins if there is a search
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        URLLoader.sharedInstance.anyForUrl(typeStr: "str", urlString: "https://api.coinstats.app/public/v1/coins",
+        URLLoader.sharedInstance.anyForUrl(typeStr: "text", urlString: "https://api.coinstats.app/public/v1/coins",
                                            typeClass: CoinsRequest.self) {[self] (image, url, result) in
             
             for i in result!.coins{
@@ -30,7 +29,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
             }
             
             DispatchQueue.main.async {
-                self.filteredData = self.coinsList
+                self.filteredCoins = self.coinsList
                 self.collectionView.reloadData()
             }
             
@@ -47,7 +46,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UITextViewDeleg
             return
         }
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -58,18 +56,17 @@ extension ViewController : UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
         
-        let urlString = filteredData[indexPath.row].imageURLString //take url string for each cell in the screen
+        let urlString = filteredCoins[indexPath.row].imageURLString //take url string for each cell in the screen
         
         
         URLLoader.sharedInstance.anyForUrl(typeStr: "image", urlString: urlString, typeClass: CoinsRequest.self) {[self] (image, url, returnObj) in
-            if(self.filteredData.count == 0){//if the result is empty then return back
+            if(self.filteredCoins.count == 0){//if the result is empty then return back
                 return
             }
             
             if image != nil {//else shows images
-                self.filteredData[indexPath.row].image = image!
-                self.coinsList[indexPath.row].image = image!
-                cell.setup(with: filteredData[indexPath.row])
+                self.filteredCoins[indexPath.row].image = image!
+                cell.setup(with: filteredCoins[indexPath.row])
             }
         }
         
@@ -78,7 +75,7 @@ extension ViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {//filtered data count
-        return filteredData.count
+        return filteredCoins.count
     }
     
     //for UI
@@ -108,7 +105,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 extension ViewController : UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        ViewDetailsController.currentCoin = filteredData[indexPath.item]
+        ViewDetailsController.currentCoin = filteredCoins[indexPath.item]
         performSegue(withIdentifier: "detailView", sender: self)
     }
 }
@@ -118,15 +115,15 @@ extension ViewController : UISearchBarDelegate{
     
     //when click the search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = []
+        filteredCoins = []
         if searchText == ""//if the search text is empty then shows all coins
         {
-            filteredData = coinsList
+            filteredCoins = coinsList
         }
         for word in coinsList{ //else just shows according to search text
             if word.name.uppercased().contains(searchText.uppercased())
             {
-                filteredData.append(word)
+                filteredCoins.append(word)
             }
         }
         self.collectionView.reloadData()//reload data

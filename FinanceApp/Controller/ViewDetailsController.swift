@@ -22,7 +22,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var coinShortening: UILabel!
     @IBOutlet weak var coinPrice: UILabel!
     
-    
     @IBOutlet weak var marketCap: UILabel!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var rank: UILabel!
@@ -44,7 +43,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData(typePeriod: "1w")
+        setData(period: "1w")
         setUpDetail()
     }
     
@@ -60,22 +59,22 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         switch sender.tag{
         case 0:
             curTime = Times.graph1D.rawValue
-            setData(typePeriod: "24h")
+            setData(period: "24h")
         case 1:
             curTime = Times.graph1W.rawValue
-            setData(typePeriod: "1w")
+            setData(period: "1w")
         case 2:
             curTime = Times.graph1M.rawValue
-            setData(typePeriod: "1m")
+            setData(period: "1m")
         case 3:
             curTime = Times.graph3M.rawValue
-            setData(typePeriod: "3m")
+            setData(period: "3m")
         case 4:
             curTime = Times.graph6M.rawValue
-            setData(typePeriod: "6m")
+            setData(period: "6m")
         case 5:
             curTime = Times.graph1Y.rawValue
-            setData(typePeriod: "1y")
+            setData(period: "1y")
         default:
             break
         }
@@ -84,7 +83,7 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     func setChart() {
         chartview.backgroundColor = .white
-        chartview.rightAxis.enabled = false
+        chartview.xAxis.enabled = false
         
         let yAxis = chartview.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 12)
@@ -92,26 +91,20 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         yAxis.labelTextColor = .black
         yAxis.axisLineColor = .white
         yAxis.labelPosition = .insideChart
-        chartview.xAxis.labelPosition = .bottom
-        chartview.xAxis.labelFont = .boldSystemFont(ofSize: 12)
-        chartview.xAxis.setLabelCount(6, force: false)
-        chartview.xAxis.labelTextColor = .black
-        chartview.xAxis.axisLineColor = .white
+        
         
         chartview.setViewPortOffsets(left: 0, top: 0, right: 0, bottom: 0)
-        
-        chartview.xAxis.gridColor = .clear
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
         
         chartview.animate(xAxisDuration: 2.5)
     }
     
-    func setData(typePeriod : String)
+    func setData(period : String)
     {
         var lineChartEntry = [ChartDataEntry]()
-        let urlStr = "https://api.coinstats.app/public/v1/charts?period=" + typePeriod + "&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
-        URLLoader.sharedInstance.anyForUrl(typeStr: "str", urlString: urlStr,
+        let urlStr = "https://api.coinstats.app/public/v1/charts?period=" + period + "&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
+        URLLoader.sharedInstance.anyForUrl(typeStr: "text", urlString: urlStr,
                                            typeClass: ChartData.self) {[self] (image, url, result) in
             
             if(result?.chart.count == 0){

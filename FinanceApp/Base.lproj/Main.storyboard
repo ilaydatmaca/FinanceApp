@@ -263,7 +263,7 @@
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgm-M9-BeM">
                                                 <rect key="frame" x="70.5" y="0.0" width="62" height="31"/>
-                                                <color key="tintColor" systemColor="systemGrayColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="1W"/>
                                                 <connections>

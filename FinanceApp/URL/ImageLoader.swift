@@ -25,7 +25,7 @@ class URLLoader {
                 }
                 return
             }
-            else if typeStr == "str"{
+            else if typeStr == "text"{
                 let coinResult = try? JSONDecoder().decode(T.self, from: data as Data)
                 DispatchQueue.main.async {
                     completionHandler(nil, urlString, coinResult)
@@ -56,7 +56,7 @@ class URLLoader {
                             completionHandler(image, urlString, nil)
                         }
                     }
-                    else if typeStr == "str"{
+                    else if typeStr == "text"{
                         
                         let coinResult = try? JSONDecoder().decode(T.self, from: data! as Data)
                         self.cache.setObject(data! as AnyObject, forKey: urlString as AnyObject)//load the cache
