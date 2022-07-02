@@ -26,11 +26,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var marketCap: UILabel!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var rank: UILabel!
-    
-    @IBOutlet weak var ranktitle: UILabel!
-    @IBOutlet weak var volumetitle: UILabel!
-    @IBOutlet weak var marketCaptitle: UILabel!
-    @IBOutlet weak var marketDatatitle: UILabel!
     @IBOutlet weak var btcPrice: UILabel!
     
     @IBOutlet weak var perDaily: UILabel!
@@ -46,6 +41,13 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     }
     var curTime = Times.graph1W.rawValue
     var curButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        curButton.tintColor = .black
+        setData(typePeriod: "1w")
+        setUpDetail()
+    }
     
     
     @IBAction func allButtons(_ sender: UIButton) {
@@ -80,12 +82,6 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         }
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setData(typePeriod: "1w")
-        setUpDetail()
-    }
     
     func setChart() {
         chartview.backgroundColor = .white
@@ -172,17 +168,10 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         volume.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion ) + "B"
         rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
         btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
-        
-        marketDatatitle.font = UIFont(name: "Montserrat-Medium", size: 15)
-        
-        
-        btcPrice.textColor = UIColor(red: 0.3451, green: 0.4039, blue: 0.3333, alpha: 1.0)
-        marketDatatitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
-        marketCaptitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
-        volumetitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
-        ranktitle.textColor = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0)
+
         
         
+    
         
         perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
         

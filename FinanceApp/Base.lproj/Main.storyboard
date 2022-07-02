@@ -211,7 +211,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="d5r-VY-oGq" firstAttribute="centerY" secondItem="nND-EB-iut" secondAttribute="centerY" id="J88-39-Iwb"/>
-                                            <constraint firstItem="d5r-VY-oGq" firstAttribute="leading" secondItem="nND-EB-iut" secondAttribute="trailing" constant="8" id="Jc4-fS-ZYJ"/>
                                             <constraint firstItem="nND-EB-iut" firstAttribute="leading" secondItem="bHx-tO-Zrl" secondAttribute="leading" id="VDX-c6-qlI"/>
                                             <constraint firstItem="I42-cY-dcm" firstAttribute="centerY" secondItem="nND-EB-iut" secondAttribute="centerY" id="ia9-7k-TYk"/>
                                         </constraints>
@@ -253,9 +252,9 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXX-bi-22m" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="253.5" width="414" height="438.5"/>
+                                <rect key="frame" x="0.0" y="253.5" width="414" height="462.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="redraw" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-4c-kn0" userLabel="graphs">
+                                    <stackView opaque="NO" contentMode="redraw" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-4c-kn0" userLabel="graphs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tar-BM-aPe">
@@ -280,7 +279,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-BJ-rbh">
-                                                <rect key="frame" x="140.5" y="0.0" width="63" height="31"/>
+                                                <rect key="frame" x="140.5" y="0.0" width="62.5" height="31"/>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="1M"/>
@@ -289,7 +288,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEC-qU-ehm">
-                                                <rect key="frame" x="211.5" y="0.0" width="62" height="31"/>
+                                                <rect key="frame" x="211" y="0.0" width="62.5" height="31"/>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="3M"/>
@@ -299,9 +298,6 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlV-QO-Ic2">
                                                 <rect key="frame" x="281.5" y="0.0" width="62" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="62" id="qsv-lm-4FS"/>
-                                                </constraints>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="6M"/>
@@ -323,24 +319,18 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
-                                    <constraint firstItem="Jua-4c-kn0" firstAttribute="top" secondItem="gXX-bi-22m" secondAttribute="top" id="Sf1-nW-xOG"/>
                                     <constraint firstItem="Jua-4c-kn0" firstAttribute="leading" secondItem="gXX-bi-22m" secondAttribute="leading" id="dPB-dr-GhY"/>
                                     <constraint firstAttribute="trailing" secondItem="Jua-4c-kn0" secondAttribute="trailing" id="egO-Nz-4jX"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-Rt-AmE">
-                                <rect key="frame" x="20" y="707" width="106" height="17"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="MARKET DATA">
-                                        <attributes>
-                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARKET DATA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-Rt-AmE">
+                                <rect key="frame" x="20" y="731" width="112" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="0wL-Pi-RLa" userLabel="MarketStack">
-                                <rect key="frame" x="20" y="742" width="380" height="64"/>
+                                <rect key="frame" x="20" y="767.5" width="380" height="64"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-R3-NBl" userLabel="CapStack">
                                         <rect key="frame" x="0.0" y="0.0" width="120.5" height="64"/>
@@ -348,7 +338,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARKET CAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTq-5P-Gzq">
                                                 <rect key="frame" x="0.0" y="0.0" width="120.5" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="marketCapData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-9p-eO9">
@@ -365,7 +355,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOLUME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx5-a7-UPv">
                                                 <rect key="frame" x="0.0" y="0.0" width="93" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="volumeData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAy-jK-VDI">
@@ -382,7 +372,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RANK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEE-Io-q6X">
                                                 <rect key="frame" x="0.0" y="0.0" width="70.5" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rankData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enU-gx-VpY">
@@ -402,7 +392,7 @@
                             <constraint firstItem="Zcf-Rt-AmE" firstAttribute="leading" secondItem="0Zz-5a-Vkq" secondAttribute="leading" constant="20" id="1u0-td-c88"/>
                             <constraint firstItem="sdr-Kf-MwF" firstAttribute="top" secondItem="0Zz-5a-Vkq" secondAttribute="top" constant="10" id="4EV-h0-oUN"/>
                             <constraint firstItem="Zcf-Rt-AmE" firstAttribute="top" secondItem="gXX-bi-22m" secondAttribute="bottom" constant="15" id="E1D-L8-UaK"/>
-                            <constraint firstAttribute="bottom" secondItem="gXX-bi-22m" secondAttribute="bottom" constant="204" id="EM1-Ef-ne8"/>
+                            <constraint firstAttribute="bottom" secondItem="gXX-bi-22m" secondAttribute="bottom" constant="180" id="EM1-Ef-ne8"/>
                             <constraint firstItem="0wL-Pi-RLa" firstAttribute="top" secondItem="Zcf-Rt-AmE" secondAttribute="bottom" constant="18" id="O8c-xo-ZGH"/>
                             <constraint firstItem="gXX-bi-22m" firstAttribute="trailing" secondItem="0Zz-5a-Vkq" secondAttribute="trailing" id="QU0-9F-Ygk"/>
                             <constraint firstItem="0Zz-5a-Vkq" firstAttribute="trailing" secondItem="sdr-Kf-MwF" secondAttribute="trailing" constant="20" id="bbX-Sv-goO"/>
@@ -425,14 +415,10 @@
                         <outlet property="coinPrice" destination="ldA-RE-VeM" id="3nC-eS-kTZ"/>
                         <outlet property="coinShortening" destination="I42-cY-dcm" id="9kA-80-Vlg"/>
                         <outlet property="marketCap" destination="b4J-9p-eO9" id="HLE-gA-557"/>
-                        <outlet property="marketCaptitle" destination="QTq-5P-Gzq" id="s3Y-FH-bhI"/>
-                        <outlet property="marketDatatitle" destination="Zcf-Rt-AmE" id="Txg-p0-5nP"/>
                         <outlet property="perDaily" destination="EZ1-iO-Myd" id="zj0-zY-c09"/>
                         <outlet property="perWeekly" destination="9ja-th-3aO" id="paK-SD-PWR"/>
                         <outlet property="rank" destination="enU-gx-VpY" id="BNm-tR-8pa"/>
-                        <outlet property="ranktitle" destination="aEE-Io-q6X" id="8FW-MZ-mPT"/>
                         <outlet property="volume" destination="DAy-jK-VDI" id="cbM-V2-CEH"/>
-                        <outlet property="volumetitle" destination="vx5-a7-UPv" id="juj-Xo-08h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZG-Js-oTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
