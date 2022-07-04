@@ -406,6 +406,7 @@
                         <outlet property="coinName" destination="d5r-VY-oGq" id="9ow-6h-OYM"/>
                         <outlet property="coinPrice" destination="ldA-RE-VeM" id="3nC-eS-kTZ"/>
                         <outlet property="coinShortening" destination="I42-cY-dcm" id="9kA-80-Vlg"/>
+                        <outlet property="initialButton" destination="rgm-M9-BeM" id="xBS-DS-yNN"/>
                         <outlet property="marketCap" destination="b4J-9p-eO9" id="HLE-gA-557"/>
                         <outlet property="perDaily" destination="EZ1-iO-Myd" id="zj0-zY-c09"/>
                         <outlet property="perWeekly" destination="9ja-th-3aO" id="paK-SD-PWR"/>

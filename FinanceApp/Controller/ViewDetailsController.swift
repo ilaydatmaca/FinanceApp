@@ -41,8 +41,10 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     var curTime = Times.graph1W.rawValue
     var curButton = UIButton()
     
+    @IBOutlet weak var initialButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        curButton = initialButton
         setData(period: "1w")
         setUpDetail()
     }
@@ -96,6 +98,10 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.setViewPortOffsets(left: 0, top: 0, right: 0, bottom: 0)
         chartview.leftAxis.gridColor = .clear
         chartview.rightAxis.gridColor = .clear
+        chartview.doubleTapToZoomEnabled = false
+        chartview.pinchZoomEnabled = false
+        chartview.scaleXEnabled = false
+        chartview.scaleYEnabled = false
         
         chartview.animate(xAxisDuration: 2.5)
     }
