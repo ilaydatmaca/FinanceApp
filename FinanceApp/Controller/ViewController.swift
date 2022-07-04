@@ -120,8 +120,9 @@ extension ViewController : UISearchBarDelegate{
         {
             filteredCoins = coinsList
         }
+        let searchTextFix = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         for word in coinsList{ //else just shows according to search text
-            if word.name.uppercased().contains(searchText.uppercased())
+            if word.name.uppercased().contains(searchTextFix.uppercased())
             {
                 filteredCoins.append(word)
             }
