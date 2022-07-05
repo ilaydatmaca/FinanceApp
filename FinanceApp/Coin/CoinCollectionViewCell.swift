@@ -18,20 +18,14 @@ class CoinCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak private var percentCoin: UILabel!
     
-    func setup(with coin : Coin){
+    func setup(with coin : Coin, image : UIImage){
         coinName.text = coin.name
-        coinImage.image = coin.image
-        
-        if (coin.priceChange1D >= 0){
-            percentCoin.text = String(format: "+%.2f%%", coin.priceChange1D)
-            percentCoin.textColor =  UIColor.green
-            
-        }else{
-            percentCoin.text = String(format: "%.2f%%", coin.priceChange1D)
-            percentCoin.textColor = UIColor.red
-        }
-        coinShortening.text = coin.shortening
-        coinPrice.text = "$" + String(format: "%.2f", coin.price)
+        coinImage.image = image
+        percentCoin.text = coin.coinPriceChange1D
+        if percentCoin.text!.starts(with: "-") {percentCoin.textColor =  UIColor.red}
+        else {percentCoin.textColor =  UIColor.green}
+        coinShortening.text = coin.symbol
+        coinPrice.text = coin.price
     }
     
 }

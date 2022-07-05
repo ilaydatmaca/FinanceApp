@@ -14,9 +14,9 @@ import TinyConstraints
 class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     static var currentCoin : Coin!
+    static var currentImage : UIImage!
+    
     @IBOutlet weak var chartview: LineChartView!
-    
-    
     @IBOutlet weak var coinIcon: UIImageView!
     @IBOutlet weak var coinName: UILabel!
     @IBOutlet weak var coinShortening: UILabel!
@@ -29,61 +29,73 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var perDaily: UILabel!
     @IBOutlet weak var perWeekly: UILabel!
-    
-    enum Times : Int{
-        case graph1D = 0
-        case graph1W = 1
-        case graph1M = 2
-        case graph3M = 3
-        case graph6M = 4
-        case graph1Y = 5
-    }
-    var curTime = Times.graph1W.rawValue
-    var curButton = UIButton()
-    
     @IBOutlet weak var initialButton: UIButton!
+    
+    var detailsViewModel: CoinDetailsViewModelProtocol!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        curButton = initialButton
-        setData(period: "1w")
-        setUpDetail()
+        
+        detailsViewModel = CoinDetailsViewModel()
+        
+        bindViewModel()
+        
+        detailsViewModel.curButton = initialButton
+        setupDetails()
+        detailsViewModel.perWeekColor = self.perWeekly.textColor
+        setDataChart(period: "1w")
+
+
+        
+        
+    }
+    private func bindViewModel() {
+        
+        detailsViewModel.changeHandler = { [unowned self] change in
+            switch change {
+            case .onError(_):
+                print("ERROR")
+                break
+            }
+        }
     }
     
-    
     @IBAction func allButtons(_ sender: UIButton) {
-        if sender.tag == curTime{
+        if sender.tag == detailsViewModel.curTime{
             return
         }
-        curButton.tintColor = .gray
+        detailsViewModel.curButton.tintColor = .gray
         sender.tintColor = .black
-        curButton = sender
+        detailsViewModel.curButton = sender
         
         switch sender.tag{
         case 0:
-            curTime = Times.graph1D.rawValue
-            setData(period: "24h")
+            detailsViewModel.curTime = Times.graph1D.rawValue
+            setDataChart(period: "24h")
         case 1:
-            curTime = Times.graph1W.rawValue
-            setData(period: "1w")
+            detailsViewModel.curTime = Times.graph1W.rawValue
+            setDataChart(period: "1w")
         case 2:
-            curTime = Times.graph1M.rawValue
-            setData(period: "1m")
+            detailsViewModel.curTime = Times.graph1M.rawValue
+            setDataChart(period: "1m")
         case 3:
-            curTime = Times.graph3M.rawValue
-            setData(period: "3m")
+            detailsViewModel.curTime = Times.graph3M.rawValue
+            setDataChart(period: "3m")
         case 4:
-            curTime = Times.graph6M.rawValue
-            setData(period: "6m")
+            detailsViewModel.curTime = Times.graph6M.rawValue
+            setDataChart(period: "6m")
         case 5:
-            curTime = Times.graph1Y.rawValue
-            setData(period: "1y")
+            detailsViewModel.curTime = Times.graph1Y.rawValue
+            setDataChart(period: "1y")
         default:
             break
         }
     }
     
     
-    func setChart() {
+    func setUIChart() {
         chartview.backgroundColor = .white
         chartview.xAxis.enabled = false
         
@@ -106,9 +118,10 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
         chartview.animate(xAxisDuration: 2.5)
     }
     
-    func setData(period : String)
+    func setDataChart(period : String)
     {
-        var lineChartEntry = [ChartDataEntry]()
+        
+
         let urlStr = "https://api.coinstats.app/public/v1/charts?period=" + period + "&coinId=" + String(ViewDetailsController.currentCoin.name.lowercased().filter { !" \n\t\r".contains($0) })
         URLLoader.sharedInstance.anyForUrl(typeStr: "text", urlString: urlStr,
                                            typeClass: ChartData.self) {[self] (image, url, result) in
@@ -116,15 +129,12 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             if(result?.chart.count == 0){
                 return
             }
-            for i in 0..<result!.chart.count{
-                
-                let entrySet = ChartDataEntry(x: Double(i), y: result!.chart[i][1])
-                lineChartEntry.append(entrySet)
-            }
             
+            detailsViewModel.setData(charData: result!)
             DispatchQueue.main.async {
-                self.setChart()
-                let set1 = LineChartDataSet(entries: lineChartEntry, label: "Prices Weekly $")
+                self.setUIChart()
+
+                let set1 = LineChartDataSet(entries: self.detailsViewModel.lineChartEntry, label: "Prices Weekly $")
                 
                 set1.mode = .cubicBezier
                 set1.drawCirclesEnabled = false
@@ -150,30 +160,25 @@ class ViewDetailsController: UIViewController, ChartViewDelegate {
             }
         }
         
-        
     }
     
     
     
-    func setUpDetail(){
-        coinIcon.image = ViewDetailsController.currentCoin.image
-        coinName.text = ViewDetailsController.currentCoin.name
-        coinShortening.text = ViewDetailsController.currentCoin.shortening
-        coinPrice.text = "$" + String(format: "%.3f", ViewDetailsController.currentCoin.price)
-        
-        marketCap.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.marketCap / CGFloat.billion ) + "B"
-        
-        volume.text = "$" + String(format: "%.2f", ViewDetailsController.currentCoin.volume / CGFloat.billion ) + "B"
-        rank.text = "#" + String(ViewDetailsController.currentCoin.rank)
-        btcPrice.text = String(format: "%.8f", ViewDetailsController.currentCoin.btcPrice) + " BTC"
+    func setupDetails(){
 
-        perDaily.text = ViewDetailsController.currentCoin.priceChange1D > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1D) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1D)
-        
-        perWeekly.text = ViewDetailsController.currentCoin.priceChange1W > 0 ? String(format: "+%.2f%%", ViewDetailsController.currentCoin.priceChange1W) : String(format: "%.2f%%", ViewDetailsController.currentCoin.priceChange1W)
-        
-        if ViewDetailsController.currentCoin.priceChange1D < 0 {perDaily.textColor =  UIColor.red}
+        coinIcon.image = ViewDetailsController.currentImage
+        coinName.text = ViewDetailsController.currentCoin.name
+        coinShortening.text = ViewDetailsController.currentCoin.symbol
+        coinPrice.text = ViewDetailsController.currentCoin.price
+        marketCap.text = ViewDetailsController.currentCoin.coinMarketCap
+        volume.text = ViewDetailsController.currentCoin.coinVolume
+        rank.text = ViewDetailsController.currentCoin.coinRank
+        btcPrice.text = ViewDetailsController.currentCoin.coinPriceBtc
+        perDaily.text = ViewDetailsController.currentCoin.coinPriceChange1D
+        perWeekly.text = ViewDetailsController.currentCoin.coinPriceChange1W
+        if perDaily.text!.starts(with: "-") {perDaily.textColor =  UIColor.red}
         else {perDaily.textColor =  UIColor.green}
-        if ViewDetailsController.currentCoin.priceChange1W < 0 {perWeekly.textColor = UIColor.red}
+        if perWeekly.text!.starts(with: "-") {perWeekly.textColor = UIColor.red}
         else {perWeekly.textColor = UIColor.green}
     }
     
